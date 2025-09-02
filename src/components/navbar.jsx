@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="relative bg-blue-100 lg:rounded-b-3xl">
+    <nav className="sticky top-0 z-50 bg-blue-100  lg:rounded-b-3xl">
       <div className="h-18  flex items-center justify-between px-6 py-2 md:px-12  lg:px-20 lg:py-2 ">
         <div className="flex items-center space-x-3">
           <img
@@ -108,3 +108,4 @@ export default function Navbar() {
     </nav>
   );
 }
+
