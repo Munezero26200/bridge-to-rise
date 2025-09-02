@@ -95,19 +95,16 @@ const Hero = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-[url('C:\Users\User\bridge-to-rise\src\assets\image\bridge3.webp')] font-serif bg-cover">
-            <main className="pt-24 pb-12">
-                <section className="container mx-auto px-6 py-12 flex flex-col items-center text-center">
-                    <div className="w-full">
-                        <h1 className="text-xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                            BRIDGE2RISE
-                        </h1>
-                        <h2 className="text-xl md:text-2xl mt-8 font-semibold">
+        <div className="min-h-screen bg-[url('C:\Users\User\bridge-to-rise\src\assets\image\bg3.png')] font-serif object-cover bg-cover">
+            <main className="pt-24 pb-12 ">
+                <section className="container mx-auto px-6 py-2 flex flex-col items-center text-center">
+                    <div className="w-2/3">
+                        <h2 className="text-xl md:text-2xl mt-1 font-semibold">
                             Connecting African Youth with Global Diaspora
                         </h2>
                         <div className=" mx-auto mt-12 text-lg">
-                            <p className="mt-6 text-lg leading-relaxe">
-                            We are here to connect African youth with diaspora professionals for mentorship, career guidance, and job readiness. Through smart matching, youth can find mentors who share their interests and expertise, opening doors to knowledge, networks, and opportunities. By bridging global experience with local talent, Bridge2Rise empowers the next generation to grow, thrive, and contribute to Africa's development.
+                            <p className="mt-6 text-justify tracking-tighter">
+                            Bridge2Rise connects African youth with diaspora professionals for mentorship, career guidance, and job readiness, opening access to knowledge, networks, and opportunities that empower the next generation to thrive and drive Africa’s development.
                             </p>
                         </div>
                         
@@ -115,7 +112,7 @@ const Hero = () => {
                 </section>
 
                 <section className="container mx-auto px-6 py-12 text-center text-black">
-                    <h2 className="text-3xl md:text-4xl font-extrabold mb-10">Our Growing Impact</h2>
+                    <h2 className="text-xl md:text-2xl font-semibold mb-10">Our Growing Impact</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         {stats.map((stat, index) => (
                             <Stat key={index} {...stat} />
