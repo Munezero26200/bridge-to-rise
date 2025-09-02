@@ -17,7 +17,7 @@ export default function Navbar() {
           </h1>
         </div>
 
-        <ul className="hidden md:flex items-center space-x-8 lg:space-x-16 font-semibold font-serif">
+        <ul className="hidden md:flex items-center space-x-8 lg:space-x-16  font-serif">
           <li>
             <a href="#home" className="hover:underline">
               Home
