@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-export default function MentorLogin() {
-  const [formData, setFormData] = useState({ email: "", password: "", role: "Mentor" });
+export default function MenteeLogin() {
+  const [formData, setFormData] = useState({ email: "", password: "", role: "Mentee" });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -9,7 +9,7 @@ export default function MentorLogin() {
       alert("Password must be at least 6 characters");
       return;
     }
-    console.log("Mentor Login:", formData);
+    console.log("Mentee Login:", formData);
     alert(`Welcome ${formData.role}: ${formData.email}`);
   };
 
@@ -17,7 +17,7 @@ export default function MentorLogin() {
     <div className="min-h-screen flex items-center justify-center bg-white p-6">
       <div className="w-full max-w-md bg-blue-100 shadow-md rounded-xl p-6">
         <h2 className="text-xl font-semibold text-center mb-4 font-serif">
-          Mentor (Diaspora) Login
+          Mentee (Youth) Login
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
@@ -33,21 +33,21 @@ export default function MentorLogin() {
             placeholder="Password (min 6 characters)"
             value={formData.password}
             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-            className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-gray-300"
+            className="w-full border rounded-lg p-2 font-serif focus:outline-none focus:ring-2 focus:ring-gray-300"
             required
             minLength={6}
           />
           <select
             value={formData.role}
             onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-            className="w-full border font-serif rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-gray-300"
+            className="w-full border rounded-lg p-2 font-serif focus:outline-none focus:ring-2 focus:ring-gray-300"
           >
-            <option value="Mentor">Diaspora (Mentor)</option>
             <option value="Mentee">Local (Mentee)</option>
+            <option value="Mentor">Diaspora (Mentor)</option>
           </select>
           <button
             type="submit"
-            className="w-full bg-gray-300 text-blue-900 p-2 rounded-lg transition font-serif font-semibold"
+            className="w-full bg-gray-300 text-blue-900 p-2 rounded-lg font-semibold font-serif transition"
           >
             Login
           </button>
@@ -56,4 +56,3 @@ export default function MentorLogin() {
     </div>
   );
 }
-

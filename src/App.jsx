@@ -1,14 +1,17 @@
 import Navbar from "./components/navbar"
 import LoginPage from "./components/loginPage"
-import YouthForm from "./components/youthForm"
-import ProfessionalForm from "./components/professionalForm"
+import MenteeLogin from "./components/loginMentee"
+import DiasporaSignin from "./components/diasporaSign"
+import MenteeSignin from "./components/MenteeSignIn"
+
 export default function App() {
   return (
    <>
     <Navbar />
     <LoginPage />
-    <YouthForm />
-    <ProfessionalForm />
+    <MenteeSignin />
+    <MenteeLogin/>
+    <DiasporaSignin/>
    </>
   )
 }
