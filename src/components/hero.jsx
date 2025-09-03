@@ -95,7 +95,7 @@ const Hero = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-[url('C:\Users\User\bridge-to-rise\src\assets\image\bg3.png')] font-serif object-cover bg-cover">
+        <div className="min-h-screen bg-[url('C:\Users\User\bridge-to-rise\src\assets\image\longBridge.png')] font-serif object-cover bg-cover">
             <main className="pt-24 pb-12 ">
                 <section className="container mx-auto px-6 py-2 flex flex-col items-center text-center">
                     <div className="w-2/3">
@@ -104,10 +104,10 @@ const Hero = () => {
                         </h2>
                         <div className=" mx-auto mt-12 text-lg">
                             <p className="mt-6 text-justify tracking-tighter">
-                            Bridge2Rise connects African youth with diaspora professionals for mentorship, career guidance, and job readiness, opening access to knowledge, networks, and opportunities that empower the next generation to thrive and drive Africa’s development.
+                                Bridge2Rise connects African youth with diaspora professionals for mentorship, career guidance, and job readiness, opening access to knowledge, networks, and opportunities that empower the next generation to thrive and drive Africa’s development.
                             </p>
                         </div>
-                        
+
                     </div>
                 </section>
 
@@ -119,27 +119,23 @@ const Hero = () => {
                         ))}
                     </div>
                 </section>
+                <section className="container mx-auto px-6 py-12 flex flex-col items-center text-center">
+                    <h1 className='text-3xl'>Choose Your Role to Get Started</h1>
+                    <div className="mt-8 flex flex-row sm:flex-row space-y-4 sm:space-y-4 sm:space-x-4 justify-center">
+                        <div className="md:space-x-12">
+                           <a href="login.jsx"><button className="w-full sm:w-auto px-8 py-3 bg-blue-100 font-bold rounded-xl shadow-lg transition-colors duration-200 hover:bg-blue-100">
+                                Login
+                            </button>
+                            </a> 
+                            <a href="">
+                            <button className="w-full sm:w-auto px-8 py-3 bg-blue-100 font-bold rounded-xl shadow-lg transition-colors duration-200 hover:bg-blue-100">
+                                Sign Up
+                            </button>
+                            </a>
+                        </div>
+                    </div>
+                </section>
             </main>
-
-            <footer className="bg-blue-100 py-8">
-                <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center md:items-start text-center md:text-left space-y-4 md:space-y-0">
-                    <div className="left-footer">
-                        <h3 className="text-xl font-bold">BRIDGE2RISE</h3>
-                        <p className="mt-2 text-sm">
-                            Connecting African youth with global diaspora professionals for a brighter future.
-                        </p>
-                        <p className="mt-4 text-sm">&copy; {new Date().getFullYear()} All rights reserved.</p>
-                    </div>
-                    <div className="right-footer">
-                        <h3 className="text-lg font-bold text-black-800 mb-2">Resources</h3>
-                        <ul className="space-y-1">
-                            <li><a href="#" className="hover:underline">Mentorship</a></li>
-                            <li><a href="#" className="hover:underline">Career Resources</a></li>
-                            <li><a href="#" className="hover:underline">Contact Us</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </footer>
         </div>
     );
 };
