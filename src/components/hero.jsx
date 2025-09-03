@@ -104,10 +104,10 @@ const Hero = () => {
                         </h2>
                         <div className=" mx-auto mt-12 text-lg">
                             <p className="mt-6 text-justify tracking-tighter">
-                            Bridge2Rise connects African youth with diaspora professionals for mentorship, career guidance, and job readiness, opening access to knowledge, networks, and opportunities that empower the next generation to thrive and drive Africa’s development.
+                                Bridge2Rise connects African youth with diaspora professionals for mentorship, career guidance, and job readiness, opening access to knowledge, networks, and opportunities that empower the next generation to thrive and drive Africa’s development.
                             </p>
                         </div>
-                        
+
                     </div>
                 </section>
 
@@ -119,6 +119,17 @@ const Hero = () => {
                         ))}
                     </div>
                 </section>
+                <div className="mt-8 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center">
+                    <div className='space-x-8 space-y-8'>
+                        <h1 className='font-bold text-2xl'>Choose you Role to Get Started</h1>
+                        <button className="w-full sm:w-auto px-8 py-3 bg-blue-100 text-black font-bold rounded-xl shadow-lg transition-colors duration-200 hover:font-bold">
+                            Login
+                        </button>
+                        <button className="w-full sm:w-auto px-8 py-3 bg-blue-100 text-black font-bold rounded-xl shadow-lg transition-colors duration-200 hover:font-bold">
+                            Sign Up
+                        </button>
+                    </div>
+                </div>
             </main>
         </div>
     );
