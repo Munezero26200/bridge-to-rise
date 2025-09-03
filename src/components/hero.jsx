@@ -95,7 +95,7 @@ const Hero = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-[url('C:\Users\User\bridge-to-rise\src\assets\image\bg3.png')] font-serif object-cover bg-cover">
+        <div className="min-h-screen bg-[url('C:\Users\User\bridge-to-rise\src\assets\image\longBridge.png')] font-serif object-cover bg-cover">
             <main className="pt-24 pb-12 ">
                 <section className="container mx-auto px-6 py-2 flex flex-col items-center text-center">
                     <div className="w-2/3">
