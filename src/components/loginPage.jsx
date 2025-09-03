@@ -1,22 +1,59 @@
-export default function LoginPage() {
-    return (
-        <div className="bg-blue-100  flex flex-col items-center justify-center">
-            <div className="bg-white rounded-lg p-8 mt-10 flex flex-col items-center w-full max-w-xl">
-            {/* words */}
-            <div>
-                <h1 className="text-4xl font-bold font-serif text-black text-center mt-10">Welcome to Bridge2Rise</h1>
-                <p className="text-center mt-4 text-lg font-serif font-normal">Sign in to continue your mentorship journey</p>
-            </div>
-            {/* form */}
-            <div className="flex justify-center mt-10">
-                <form className="flex flex-col space-y-4 w-96">
-                    <input type="email" placeholder="Email" className="border border-gray-300 rounded-md p-2" />
-                    <input type="password" placeholder="Password" className="border border-gray-300 rounded-md p-2" />
-                    <button type="submit" className="bg-gray-300 text-black  font-bold py-2 rounded-md hover:bg-gray-400 transition duration-300">Sign In</button>
-                </form>
-            </div>
-            </div>
+import React, { useState } from "react";
 
-        </div>
-    );
+export default function MentorLogin() {
+  const [formData, setFormData] = useState({ email: "", password: "", role: "Mentor" });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.password.length < 6) {
+      alert("Password must be at least 6 characters");
+      return;
+    }
+    console.log("Mentor Login:", formData);
+    alert(`Welcome ${formData.role}: ${formData.email}`);
+  };
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-white p-6">
+      <div className="w-full max-w-md bg-blue-100 shadow-md rounded-xl p-6">
+        <h2 className="text-xl font-semibold text-center mb-4 font-serif">
+          Mentor (Diaspora) Login
+        </h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            type="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password (min 6 characters)"
+            value={formData.password}
+            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+            className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            required
+            minLength={6}
+          />
+          <select
+            value={formData.role}
+            onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+            className="w-full border font-serif rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          >
+            <option value="Mentor">Diaspora (Mentor)</option>
+            <option value="Mentee">Local (Mentee)</option>
+          </select>
+          <button
+            type="submit"
+            className="w-full bg-gray-300 text-blue-900 p-2 rounded-lg transition font-serif font-semibold"
+          >
+            Login
+          </button>
+        </form>
+      </div>
+    </div>
+  );
 }
+
