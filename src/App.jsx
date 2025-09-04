@@ -1,18 +1,19 @@
-import Navbar from "./components/navbar"
-import LoginPage from "./components/loginPage"
-import MenteeLogin from "./components/loginMentee"
-import DiasporaSignin from "./components/diasporaSign"
-import MenteeSignin from "./components/MenteeSignIn"
-import Hero from './components/hero'
-import MentorDashboard from './components/mentorDashboard'
-import MenteeDashboard from './components/MenteeDashboard'
-import Footer from './components/footer'
+// import Navbar from "./components/navbar"
+// import LoginPage from "./components/loginPage"
+// import MenteeLogin from "./components/loginMentee"
+// import DiasporaSignin from "./components/diasporaSign"
+// import MenteeSignin from "./components/menteeSignin"
+// import Hero from './components/hero'
+// import MentorDashboard from './components/mentorDashboard'
+// import MenteeDashboard from './components/MenteeDashboard'
+// import Footer from './components/footer'
+import All from './components/Combined'
 
 
 export default function App() {
   return (
    <>
-    <Navbar />
+    {/* <Navbar />
     <LoginPage />
     <MenteeSignin />
     <MenteeLogin/>
@@ -20,7 +21,8 @@ export default function App() {
     < Hero/>
     <MentorDashboard />
     <MenteeDashboard />
-    <Footer />
+    <Footer /> */}
+    < All />
    </>
   )
 }
