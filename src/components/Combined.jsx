@@ -2,30 +2,30 @@ import React, { useState, useEffect } from "react";
 
 // Inline SVG for icons to avoid external dependencies.
 const LuUsers = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-    <circle cx="8.5" cy="7" r="4"></circle>
-    <path d="M20 8v6M23 11h-6"></path>
-    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-    <circle cx="9" cy="7" r="4" />
-    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-  </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+        <circle cx="8.5" cy="7" r="4"></circle>
+        <path d="M20 8v6M23 11h-6"></path>
+        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </svg>
 );
 
 const LuUserPlus = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-    <circle cx="8.5" cy="7" r="4"></circle>
-    <path d="M20 8v6M23 11h-6"></path>
-  </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+        <circle cx="8.5" cy="7" r="4"></circle>
+        <path d="M20 8v6M23 11h-6"></path>
+    </svg>
 );
 
 const LuLayers = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 19L2 12l10-7 10 7-10 7z"></path>
-    <path d="M2 12l10 7 10-7zM12 2v20z"></path>
-  </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 19L2 12l10-7 10 7-10 7z"></path>
+        <path d="M2 12l10 7 10-7zM12 2v20z"></path>
+    </svg>
 );
 
 const MentorsIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M17 20h-3a3 3 0 01-3-3V7a3 3 0 013-3h3a3 3 0 013 3v10a3 3 0 01-3 3zM15 10a1 1 0 100-2 1 1 0 000 2zM9 10a1 1 0 100-2 1 1 0 000 2z" /></svg>);
@@ -38,690 +38,691 @@ const ProfileIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" fill="none" v
 
 // --- Navbar Component ---
 function Navbar({ navigate }) {
-  const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
-  return (
-    <nav className="sticky top-0 z-50 bg-black text-white lg:rounded-b-3xl">
-      <div className="h-18 flex items-center justify-between px-6 py-2 md:px-12 lg:px-20 lg:py-2">
-        <div className="flex items-center space-x-3">
-          <h1 className="text-lg md:text-2xl font-bold font-serif">
-            BRIDGE2RISE
-          </h1>
-        </div>
-        <ul className="hidden md:flex items-center space-x-8 lg:space-x-16 font-serif">
-          <li><a onClick={() => navigate('hero')} className="hover:text-blue-100 transition-colors duration-200 cursor-pointer">Home</a></li>
-          <li><a onClick={() => navigate('mentorLogin')} className="hover:text-blue-100 transition-colors duration-200 cursor-pointer">Mentor Login</a></li>
-          <li><a onClick={() => navigate('menteeLogin')} className="hover:text-blue-100 transition-colors duration-200 cursor-pointer">Mentee Login</a></li>
-          <li><a onClick={() => navigate('diasporaSignup')} className="hover:text-blue-100 transition-colors duration-200 cursor-pointer">Diaspora Sign Up</a></li>
-          <li><a onClick={() => navigate('menteeSignup')} className="hover:text-blue-100 transition-colors duration-200 cursor-pointer">Mentee Sign Up</a></li>
-        </ul>
-        <div className="md:hidden">
-          <button onClick={() => setIsOpen(!isOpen)} className="text-white focus:outline-none focus:ring-2 focus:ring-white" aria-expanded={isOpen} aria-controls="mobile-menu">
-            <span className="sr-only">Open main menu</span>
-            {isOpen ? (
-              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M6 6l12 12"></path>
-                <path d="M6 18L18 6"></path>
-              </svg>
-            ) : (
-              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M3 6h18"></path>
-                <path d="M3 12h18"></path>
-                <path d="M3 18h18"></path>
-              </svg>
+    return (
+        <nav className="sticky top-0 z-50 bg-white text-black">
+            <div className="h-18 flex items-center justify-between px-6 py-2 md:px-12 lg:px-20 lg:py-2">
+                <div className="flex items-center space-x-3">
+                    <img
+                        src="/src/assets/image/logo.png"
+                        alt="Bridge2Rise logo"
+                        className="h-12 md:h-14 lg:h-16 rounded-2xl"
+                    />
+                    <h1 className="text-lg md:text-2xl font-bold font-serif">
+                        BRIDGE2RISE
+                    </h1>
+                </div>
+                <ul className="hidden md:flex items-center space-x-8 lg:space-x-16 font-serif">
+                    <li><a onClick={() => navigate('hero')} className="hover:font-bold transition-colors duration-200 cursor-pointer">Home</a></li>
+                    <li><a onClick={() => navigate('mentorLogin')} className="hover:font-bold transition-colors duration-200 cursor-pointer">Mentor</a></li>
+                    <li><a onClick={() => navigate('menteeLogin')} className="hover:font-bold transition-colors duration-200 cursor-pointer">Mentee</a></li>
+                </ul>
+                <div className="md:hidden">
+                    <button onClick={() => setIsOpen(!isOpen)} className="text-white focus:outline-none focus:ring-2 focus:ring-white" aria-expanded={isOpen} aria-controls="mobile-menu">
+                        <span className="sr-only">Open main menu</span>
+                        {isOpen ? (
+                            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                                <path d="M6 6l12 12"></path>
+                                <path d="M6 18L18 6"></path>
+                            </svg>
+                        ) : (
+                            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                                <path d="M3 6h18"></path>
+                                <path d="M3 12h18"></path>
+                                <path d="M3 18h18"></path>
+                            </svg>
+                        )}
+                    </button>
+                </div>
+            </div>
+            {isOpen && (
+                <div className="md:hidden bg-black border-t border-white">
+                    <ul className="hidden md:flex items-center space-x-8 lg:space-x-16 font-serif">
+                        <li><a onClick={() => navigate('hero')} className="hover:font-bold transition-colors duration-200 cursor-pointer">Home</a></li>
+                        <li><a onClick={() => navigate('mentorLogin')} className="hover:font-bold transition-colors duration-200 cursor-pointer">Mentor</a></li>
+                        <li><a onClick={() => navigate('menteeLogin')} className="hover:font-bold transition-colors duration-200 cursor-pointer">Mentee</a></li>
+                    </ul>
+                </div>
             )}
-          </button>
-        </div>
-      </div>
-      {isOpen && (
-        <div className="md:hidden bg-black border-t border-white">
-          <ul className="flex flex-col items-center space-y-4 py-4 font-semibold font-serif">
-            <li><a onClick={() => navigate('hero')} className="block w-full text-center hover:text-blue-100 transition-colors duration-200 cursor-pointer">Home</a></li>
-            <li><a onClick={() => navigate('mentorLogin')} className="block w-full text-center hover:text-blue-100 transition-colors duration-200 cursor-pointer">Mentor Login</a></li>
-            <li><a onClick={() => navigate('menteeLogin')} className="block w-full text-center hover:text-blue-100 transition-colors duration-200 cursor-pointer">Mentee Login</a></li>
-            <li><a onClick={() => navigate('diasporaSignup')} className="block w-full text-center hover:text-blue-100 transition-colors duration-200 cursor-pointer">Diaspora Sign Up</a></li>
-            <li><a onClick={() => navigate('menteeSignup')} className="block w-full text-center hover:text-blue-100 transition-colors duration-200 cursor-pointer">Mentee Sign Up</a></li>
-          </ul>
-        </div>
-      )}
-    </nav>
-  );
+        </nav>
+    );
 }
 
 // --- Hero Section Component ---
 const Stat = ({ number, text, icon: Icon }) => (
-  <div className="flex flex-col items-center bg-white p-6 rounded-xl shadow-md">
-    <div className="text-black mb-2"><Icon /></div>
-    <div className="text-4xl font-bold font-serif">{number}</div>
-    <div className="text-lg text-black">{text}</div>
-  </div>
+    <div className="flex flex-col items-center bg-white p-6 rounded-xl shadow-md">
+        <div className="text-black mb-2"><Icon /></div>
+        <div className="text-4xl font-bold font-serif">{number}</div>
+        <div className="text-lg text-black">{text}</div>
+    </div>
 );
 
 const stats = [
-  { number: "100+", text: "Mentors", icon: LuUsers },
-  { number: "500+", text: "Mentees", icon: LuUserPlus },
-  { number: "1,000+", text: "Interactions", icon: LuLayers },
-  { number: "25+", text: "Courses", icon: LuLayers },
+    { number: "100+", text: "Mentors", icon: LuUsers },
+    { number: "500+", text: "Mentees", icon: LuUserPlus },
+    { number: "1,000+", text: "Interactions", icon: LuLayers },
+    { number: "25+", text: "Courses", icon: LuLayers },
 ];
 
 function Hero({ navigate }) {
-  return (
-    <main className="bg-blue-100">
-      <section className="bg-white bg-[url('C:\Users\User\bridge-to-rise\src\assets\image\longBridge.png')] bg-cover  text-black py-16 px-6 md:px-12 lg:px-20 lg:py-24 rounded-b-3xl">
-        <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between space-y-10 lg:space-y-0 lg:space-x-12">
-          <div className="w-full lg:w-1/2 text-center lg:text-left">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-serif leading-tight">
-              Connecting the <span className="text-black">African Diaspora</span> with local youth.
-            </h1>
-            <p className="mt-4 md:text-lg font-sans">
-              A bridge to global opportunities and mentorship, empowering the next generation of African leaders.
-            </p>
-          </div>
-          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
-            <img
-              src="https://placehold.co/500x300/ffffff/000000?text=Bridge2Rise+Hero+Image"
-              alt="Mentorship illustration"
-              className="rounded-xl shadow-lg w-full max-w-lg"
-            />
-          </div>
-        </div>
-      </section>
-      <section className="container mx-auto px-6 py-12 text-center text-black">
-        <h2 className="text-xl md:text-2xl font-semibold mb-10">Our Growing Impact</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((stat, index) => (<Stat key={index} {...stat} />))}
-        </div>
-      </section>
-      <div className="mt-8 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center">
-        <div className='space-x-8 space-y-8'>
-          <h1 className='font-bold text-2xl text-black'>Choose your Role to Get Started</h1>
-          <button onClick={() => navigate('mentorLogin')} className="w-full sm:w-auto px-8 py-3 bg-black text-white font-bold rounded-xl shadow-lg transition-colors duration-200 hover:text-blue-100 hover:bg-black">
-            Login as Mentor
-          </button>
-          <button onClick={() => navigate('menteeLogin')} className="w-full sm:w-auto px-8 py-3 bg-black text-white font-bold rounded-xl shadow-lg transition-colors duration-200 hover:text-blue-100 hover:bg-black">
-            Login as Mentee
-          </button>
-        </div>
-      </div>
-    </main>
-  );
+    return (
+        <main className="bg-blue-100">
+            <section className="bg-white bg-[url('C:\Users\User\bridge-to-rise\src\assets\image\longBridge.png')] bg-cover  text-black py-16 px-6 md:px-12 lg:px-20 lg:py-24 rounded-b-3xl">
+                <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between space-y-10 lg:space-y-0 lg:space-x-12">
+                    <div className="w-full lg:w-1/2 text-center lg:text-left">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-serif leading-tight">
+                            Connecting the <span className="text-black">African Diaspora</span> with local youth.
+                        </h1>
+                        <p className="mt-4 md:text-lg font-sans">
+                            A bridge to global opportunities and mentorship, empowering the next generation of African leaders.
+                        </p>
+                    </div>
+                    <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+                        <img
+                            src="/src/assets/image/mentoring.png"
+                            alt="Mentorship illustration"
+                            className="rounded-xl shadow-lg w-full max-w-lg"
+                        />
+                    </div>
+                </div>
+            </section>
+            <section className="container mx-auto px-6 py-12 text-center text-black">
+                <h2 className="text-xl md:text-2xl font-semibold mb-10">Our Growing Impact</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {stats.map((stat, index) => (<Stat key={index} {...stat} />))}
+                </div>
+            </section>
+            <div className="mt-8 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center">
+                <div className='space-x-8 space-y-8'>
+                    <h1 className='font-bold text-2xl text-black'>Choose your Role to Get Started</h1>
+                    <button onClick={() => navigate('mentorLogin')} className="w-full sm:w-auto px-8 py-3 bg-black text-white font-bold rounded-xl shadow-lg transition-colors duration-200 hover:text-blue-100 hover:bg-black">
+                        Login as Mentor
+                    </button>
+                    <button onClick={() => navigate('menteeLogin')} className="w-full sm:w-auto px-8 py-3 bg-black text-white font-bold rounded-xl shadow-lg transition-colors duration-200 hover:text-blue-100 hover:bg-black">
+                        Login as Mentee
+                    </button>
+                </div>
+            </div>
+        </main>
+    );
 }
 
 // --- Footer Component ---
 function Footer() {
-  return (
-    <footer className="bg-white py-8 text-black">
-      <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center md:items-start text-center md:text-left space-y-4 md:space-y-0">
-        <div className="left-footer">
-          <h3 className="text-xl font-bold">BRIDGE2RISE</h3>
-          <p className="mt-2 text-sm">
-            Connecting African youth with global diaspora professionals for a brighter future.
-          </p>
-          <p className="mt-4 text-sm">&copy; {new Date().getFullYear()} All rights reserved.</p>
-        </div>
-        <div className="right-footer">
-          <h3 className="text-lg font-bold mb-2">Resources</h3>
-          <ul className="space-y-1">
-            <li><a href="#" className="hover:underline hover:text-blue-100 transition-colors duration-200">Mentorship</a></li>
-            <li><a href="#" className="hover:underline hover:text-blue-100 transition-colors duration-200">Career Resources</a></li>
-            <li><a href="#" className="hover:underline hover:text-blue-100 transition-colors duration-200">Contact Us</a></li>
-          </ul>
-        </div>
-      </div>
-    </footer>
-  );
+    return (
+        <footer className="bg-white py-8 text-black">
+            <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center md:items-start text-center md:text-left space-y-4 md:space-y-0">
+                <div className="left-footer">
+                    <h3 className="text-xl font-bold">BRIDGE2RISE</h3>
+                    <p className="mt-2 text-sm">
+                        Connecting African youth with global diaspora professionals for a brighter future.
+                    </p>
+                    <p className="mt-4 text-sm">&copy; {new Date().getFullYear()} All rights reserved.</p>
+                </div>
+                <div className="right-footer">
+                    <h3 className="text-lg font-bold mb-2">Resources</h3>
+                    <ul className="space-y-1">
+                        <li><a href="#" className="hover:underline hover:text-blue-100 transition-colors duration-200">Mentorship</a></li>
+                        <li><a href="#" className="hover:underline hover:text-blue-100 transition-colors duration-200">Career Resources</a></li>
+                        <li><a href="#" className="hover:underline hover:text-blue-100 transition-colors duration-200">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    );
 }
 
 // --- Mentor Login Component ---
 function MentorLogin({ navigate }) {
-  const [formData, setFormData] = useState({ email: "", password: "", role: "Mentor" });
-  const [message, setMessage] = useState(null);
+    const [formData, setFormData] = useState({ email: "", password: "", role: "Mentor" });
+    const [message, setMessage] = useState(null);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (formData.password.length < 6) {
-      setMessage("Password must be at least 6 characters.");
-      return;
-    }
-    console.log("Mentor Login:", formData);
-    setMessage(`Welcome ${formData.role}: ${formData.email}`);
-    navigate('mentorDashboard');
-  };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (formData.password.length < 6) {
+            setMessage("Password must be at least 6 characters.");
+            return;
+        }
+        console.log("Mentor Login:", formData);
+        setMessage(`Welcome ${formData.role}: ${formData.email}`);
+        navigate('mentorDashboard');
+    };
 
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-blue-100 p-6">
-      <div className="w-full max-w-md bg-white shadow-md rounded-xl p-6">
-        <h2 className="text-xl font-semibold text-center mb-4 font-serif text-black">
-          Mentor (Diaspora) Login
-        </h2>
-        {message && (
-          <div className="bg-white text-black p-3 rounded-md mb-4 text-center">
-            {message}
-          </div>
-        )}
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
-            required
-          />
-          <input
-            type="password"
-            placeholder="Password (min 6 characters)"
-            value={formData.password}
-            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-            className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
-            required
-            minLength={6}
-          />
-          <select
-            value={formData.role}
-            onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-            className="w-full border font-serif rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
-          >
-            <option value="Mentor">Diaspora (Mentor)</option>
-            <option value="Mentee">Local (Mentee)</option>
-          </select>
-          <button
-            type="submit"
-            className="w-full bg-black text-white p-2 rounded-lg transition font-serif font-semibold hover:bg-gray-800"
-          >
-            Login
-          </button>
-        </form>
-        <p className="mt-4 text-center text-black">
-          Don't have an account? <span onClick={() => navigate('diasporaSignup')} className="text-blue-600 hover:text-black cursor-pointer">Sign Up</span>
-        </p>
-      </div>
-    </div>
-  );
+    return (
+        <div className="min-h-screen flex items-center justify-center bg-blue-100 p-6">
+            <div className="w-full max-w-md bg-white shadow-md rounded-xl p-6">
+                <h2 className="text-xl font-semibold text-center mb-4 font-serif text-black">
+                    Mentor (Diaspora) Login
+                </h2>
+                {message && (
+                    <div className="bg-white text-black p-3 rounded-md mb-4 text-center">
+                        {message}
+                    </div>
+                )}
+                <form onSubmit={handleSubmit} className="space-y-4">
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
+                        required
+                    />
+                    <input
+                        type="password"
+                        placeholder="Password (min 6 characters)"
+                        value={formData.password}
+                        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                        className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
+                        required
+                        minLength={6}
+                    />
+                    <select
+                        value={formData.role}
+                        onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+                        className="w-full border font-serif rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
+                    >
+                        <option value="Mentor">Diaspora (Mentor)</option>
+                        <option value="Mentee">Local (Mentee)</option>
+                    </select>
+                    <button
+                        type="submit"
+                        className="w-full bg-black text-white p-2 rounded-lg transition font-serif font-semibold hover:bg-gray-800"
+                    >
+                        Login
+                    </button>
+                </form>
+                <p className="mt-4 text-center text-black">
+                    Don't have an account? <span onClick={() => navigate('diasporaSignup')} className="text-black font-bold  hover:text-black cursor-pointer">Sign Up</span>
+                </p>
+            </div>
+        </div>
+    );
 }
 
 // --- Mentee Login Component ---
 function MenteeLogin({ navigate }) {
-  const [formData, setFormData] = useState({ email: "", password: "", role: "Mentee" });
-  const [message, setMessage] = useState(null);
+    const [formData, setFormData] = useState({ email: "", password: "", role: "Mentee" });
+    const [message, setMessage] = useState(null);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (formData.password.length < 6) {
-      setMessage("Password must be at least 6 characters.");
-      return;
-    }
-    console.log("Mentee Login:", formData);
-    setMessage(`Welcome ${formData.role}: ${formData.email}`);
-    navigate('menteeDashboard');
-  };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (formData.password.length < 6) {
+            setMessage("Password must be at least 6 characters.");
+            return;
+        }
+        console.log("Mentee Login:", formData);
+        setMessage(`Welcome ${formData.role}: ${formData.email}`);
+        navigate('menteeDashboard');
+    };
 
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-blue-100 p-6">
-      <div className="w-full max-w-md bg-white shadow-md rounded-xl p-6">
-        <h2 className="text-xl font-semibold text-center mb-4 font-serif text-black">
-          Mentee (Youth) Login
-        </h2>
-        {message && (
-          <div className="bg-white text-black p-3 rounded-md mb-4 text-center">
-            {message}
-          </div>
-        )}
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
-            required
-          />
-          <input
-            type="password"
-            placeholder="Password (min 6 characters)"
-            value={formData.password}
-            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-            className="w-full border rounded-lg p-2 font-serif focus:outline-none focus:ring-2 focus:ring-black"
-            required
-            minLength={6}
-          />
-          <select
-            value={formData.role}
-            onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-            className="w-full border rounded-lg p-2 font-serif focus:outline-none focus:ring-2 focus:ring-black"
-          >
-            <option value="Mentee">Local (Mentee)</option>
-            <option value="Mentor">Diaspora (Mentor)</option>
-          </select>
-          <button
-            type="submit"
-            className="w-full bg-black text-white p-2 rounded-lg font-serif font-semibold transition hover:bg-gray-800"
-          >
-            Login
-          </button>
-        </form>
-        <p className="mt-4 text-center text-black">
-          Don't have an account? <span onClick={() => navigate('menteeSignup')} className="text-blue-600 hover:text-black cursor-pointer">Sign Up</span>
-        </p>
-      </div>
-    </div>
-  );
+    return (
+        <div className="min-h-screen flex items-center justify-center bg-blue-100 p-6">
+            <div className="w-full max-w-md bg-white shadow-md rounded-xl p-6">
+                <h2 className="text-xl font-semibold text-center mb-4 font-serif text-black">
+                    Mentee (Youth) Login
+                </h2>
+                {message && (
+                    <div className="bg-white text-black p-3 rounded-md mb-4 text-center">
+                        {message}
+                    </div>
+                )}
+                <form onSubmit={handleSubmit} className="space-y-4">
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
+                        required
+                    />
+                    <input
+                        type="password"
+                        placeholder="Password (min 6 characters)"
+                        value={formData.password}
+                        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                        className="w-full border rounded-lg p-2 font-serif focus:outline-none focus:ring-2 focus:ring-black"
+                        required
+                        minLength={6}
+                    />
+                    <select
+                        value={formData.role}
+                        onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+                        className="w-full border rounded-lg p-2 font-serif focus:outline-none focus:ring-2 focus:ring-black"
+                    >
+                        <option value="Mentee">Local (Mentee)</option>
+                        <option value="Mentor">Diaspora (Mentor)</option>
+                    </select>
+                    <button
+                        type="submit"
+                        className="w-full bg-black text-white p-2 rounded-lg font-serif font-semibold transition hover:bg-gray-800"
+                    >
+                        Login
+                    </button>
+                </form>
+                <p className="mt-4 text-center text-black">
+                    Don't have an account? <span onClick={() => navigate('menteeSignup')} className="text-black font-bold hover:text-black cursor-pointer">Sign Up</span>
+                </p>
+            </div>
+        </div>
+    );
 }
 
 // --- Diaspora Sign Up Component ---
 function DiasporaSignin({ navigate }) {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    password: "",
-    country: "",
-    field: "",
-    otherField: ""
-  });
-  const [message, setMessage] = useState(null);
+    const [formData, setFormData] = useState({
+        fullName: "",
+        email: "",
+        password: "",
+        country: "",
+        field: "",
+        otherField: ""
+    });
+    const [message, setMessage] = useState(null);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!formData.field) {
-      setMessage("Please choose a field from the list.");
-      return;
-    }
-    if (formData.password.length < 6) {
-      setMessage("Password must be at least 6 characters.");
-      return;
-    }
-    console.log("Diaspora SignUp:", formData);
-    setMessage(`Welcome Mentor ${formData.fullName} from ${formData.country}`);
-    navigate('mentorDashboard');
-  };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!formData.field) {
+            setMessage("Please choose a field from the list.");
+            return;
+        }
+        if (formData.password.length < 6) {
+            setMessage("Password must be at least 6 characters.");
+            return;
+        }
+        console.log("Diaspora SignUp:", formData);
+        setMessage(`Welcome Mentor ${formData.fullName} from ${formData.country}`);
+        navigate('mentorDashboard');
+    };
 
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-blue-100 p-6">
-      <div className="w-full max-w-md bg-white shadow-md rounded-xl p-6">
-        <h2 className="text-xl font-semibold text-center mb-4 font-serif text-black">
-          Diaspora (Mentor) Sign Up
-        </h2>
-        {message && (
-          <div className="bg-white text-black p-3 rounded-md mb-4 text-center">
-            {message}
-          </div>
-        )}
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="text"
-            placeholder="Full Name"
-            value={formData.fullName}
-            onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-            className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
-            required
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
-            required
-          />
-          <input
-            type="password"
-            placeholder="Password (min 6 characters)"
-            value={formData.password}
-            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-            className="w-full border rounded-lg p-2 font-serif focus:outline-none focus:ring-2 focus:ring-black"
-            required
-            minLength={6}
-          />
-          <input
-            type="text"
-            placeholder="Country of Residence"
-            value={formData.country}
-            onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-            className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
-            required
-          />
-          <select
-            value={formData.field}
-            onChange={(e) => setFormData({ ...formData, field: e.target.value })}
-            className="w-full font-serif border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
-            required
-          >
-            <option value="" disabled>Choose a field</option>
-            <option>Information Technology (IT)</option>
-            <option>Business & Entrepreneurship</option>
-            <option>HealthCare & Medicine</option>
-            <option>Education & Research</option>
-            <option>Engineering & Architecture</option>
-            <option>Tourism & Hospitality Management</option>
-            <option>Other</option>
-          </select>
-          {formData.field === "Other" && (
-            <input
-              type="text"
-              placeholder="Please specify your field"
-              value={formData.otherField}
-              onChange={(e) => setFormData({ ...formData, otherField: e.target.value })}
-              className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
-              required
-            />
-          )}
-          <button
-            type="submit"
-            className="w-full bg-black text-white font-serif font-semibold p-2 rounded-lg transition hover:bg-gray-800"
-          >
-            Sign Up
-          </button>
-        </form>
-        <p className="mt-4 text-center text-black">
-          Already a member? <span onClick={() => navigate('mentorLogin')} className="text-blue-600 hover:text-black cursor-pointer">Log In</span>
-        </p>
-      </div>
-    </div>
-  );
+    return (
+        <div className="min-h-screen flex items-center justify-center bg-blue-100 p-6">
+            <div className="w-full max-w-md bg-white shadow-md rounded-xl p-6">
+                <h2 className="text-xl font-semibold text-center mb-4 font-serif text-black">
+                    Diaspora (Mentor) Sign Up
+                </h2>
+                {message && (
+                    <div className="bg-white text-black p-3 rounded-md mb-4 text-center">
+                        {message}
+                    </div>
+                )}
+                <form onSubmit={handleSubmit} className="space-y-4">
+                    <input
+                        type="text"
+                        placeholder="Full Name"
+                        value={formData.fullName}
+                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                        className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
+                        required
+                    />
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
+                        required
+                    />
+                    <input
+                        type="password"
+                        placeholder="Password (min 6 characters)"
+                        value={formData.password}
+                        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                        className="w-full border rounded-lg p-2 font-serif focus:outline-none focus:ring-2 focus:ring-black"
+                        required
+                        minLength={6}
+                    />
+                    <input
+                        type="text"
+                        placeholder="Country of Residence"
+                        value={formData.country}
+                        onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                        className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
+                        required
+                    />
+                    <select
+                        value={formData.field}
+                        onChange={(e) => setFormData({ ...formData, field: e.target.value })}
+                        className="w-full font-serif border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
+                        required
+                    >
+                        <option value="" disabled>Choose a field</option>
+                        <option>Information Technology (IT)</option>
+                        <option>Business & Entrepreneurship</option>
+                        <option>HealthCare & Medicine</option>
+                        <option>Education & Research</option>
+                        <option>Engineering & Architecture</option>
+                        <option>Tourism & Hospitality Management</option>
+                        <option>Other</option>
+                    </select>
+                    {formData.field === "Other" && (
+                        <input
+                            type="text"
+                            placeholder="Please specify your field"
+                            value={formData.otherField}
+                            onChange={(e) => setFormData({ ...formData, otherField: e.target.value })}
+                            className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
+                            required
+                        />
+                    )}
+                    <button
+                        type="submit"
+                        className="w-full bg-black text-white font-serif font-semibold p-2 rounded-lg transition hover:bg-gray-800"
+                    >
+                        Sign Up
+                    </button>
+                </form>
+                <p className="mt-4 text-center text-black">
+                    Already a member? <span onClick={() => navigate('mentorLogin')} className="text-black font-bold hover:text-black cursor-pointer">Log In</span>
+                </p>
+            </div>
+        </div>
+    );
 }
 
 // --- Mentee Sign Up Component ---
 function MenteeSignin({ navigate }) {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    password: "",
-    education: "",
-    otherEducation: ""
-  });
-  const [message, setMessage] = useState(null);
+    const [formData, setFormData] = useState({
+        fullName: "",
+        email: "",
+        password: "",
+        education: "",
+        otherEducation: ""
+    });
+    const [message, setMessage] = useState(null);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!formData.education) {
-      setMessage("Please choose education level from the list.");
-      return;
-    }
-    if (formData.password.length < 6) {
-      setMessage("Password must be at least 6 characters.");
-      return;
-    }
-    console.log("Mentee SignUp:", formData);
-    setMessage(`Welcome Mentee ${formData.fullName}`);
-    navigate('menteeDashboard');
-  };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!formData.education) {
+            setMessage("Please choose education level from the list.");
+            return;
+        }
+        if (formData.password.length < 6) {
+            setMessage("Password must be at least 6 characters.");
+            return;
+        }
+        console.log("Mentee SignUp:", formData);
+        setMessage(`Welcome Mentee ${formData.fullName}`);
+        navigate('menteeDashboard');
+    };
 
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-blue-100 p-6">
-      <div className="w-full max-w-md bg-white shadow-md rounded-xl p-6">
-        <h2 className="text-xl font-semibold text-center mb-4 font-serif text-black">
-          Mentee (Youth) Sign Up
-        </h2>
-        {message && (
-          <div className="bg-white text-black p-3 rounded-md mb-4 text-center">
-            {message}
-          </div>
-        )}
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="text"
-            placeholder="Full Name"
-            value={formData.fullName}
-            onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-            className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
-            required
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
-            required
-          />
-          <input
-            type="password"
-            placeholder="Password (min 6 characters)"
-            value={formData.password}
-            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-            className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
-            required
-            minLength={6}
-          />
-          <select
-            value={formData.education}
-            onChange={(e) => setFormData({ ...formData, education: e.target.value })}
-            className="w-full border rounded-lg p-2 font-serif focus:outline-none focus:ring-2 focus:ring-black"
-            required
-          >
-            <option value="" disabled>Choose education level</option>
-            <option>Secondary</option>
-            <option>Undergraduate</option>
-            <option>Post-graduate</option>
-            <option>Other</option>
-          </select>
-          {formData.education === "Other" && (
-            <input
-              type="text"
-              placeholder="Please specify education level"
-              value={formData.otherEducation}
-              onChange={(e) => setFormData({ ...formData, otherEducation: e.target.value })}
-              className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
-              required
-            />
-          )}
-          <button
-            type="submit"
-            className="w-full bg-black text-white p-2 rounded-lg font-serif font-semibold transition hover:bg-gray-800"
-          >
-            Sign Up
-          </button>
-        </form>
-        <p className="mt-4 text-center text-black">
-          Already a member? <span onClick={() => navigate('menteeLogin')} className="text-blue-600 hover:text-black cursor-pointer">Log In</span>
-        </p>
-      </div>
-    </div>
-  );
+    return (
+        <div className="min-h-screen flex items-center justify-center bg-blue-100 p-6">
+            <div className="w-full max-w-md bg-white shadow-md rounded-xl p-6">
+                <h2 className="text-xl font-semibold text-center mb-4 font-serif text-black">
+                    Mentee (Youth) Sign Up
+                </h2>
+                {message && (
+                    <div className="bg-white text-black p-3 rounded-md mb-4 text-center">
+                        {message}
+                    </div>
+                )}
+                <form onSubmit={handleSubmit} className="space-y-4">
+                    <input
+                        type="text"
+                        placeholder="Full Name"
+                        value={formData.fullName}
+                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                        className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
+                        required
+                    />
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
+                        required
+                    />
+                    <input
+                        type="password"
+                        placeholder="Password (min 6 characters)"
+                        value={formData.password}
+                        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                        className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
+                        required
+                        minLength={6}
+                    />
+                    <select
+                        value={formData.education}
+                        onChange={(e) => setFormData({ ...formData, education: e.target.value })}
+                        className="w-full border rounded-lg p-2 font-serif focus:outline-none focus:ring-2 focus:ring-black"
+                        required
+                    >
+                        <option value="" disabled>Choose education level</option>
+                        <option>Secondary</option>
+                        <option>Undergraduate</option>
+                        <option>Post-graduate</option>
+                        <option>Other</option>
+                    </select>
+                    {formData.education === "Other" && (
+                        <input
+                            type="text"
+                            placeholder="Please specify education level"
+                            value={formData.otherEducation}
+                            onChange={(e) => setFormData({ ...formData, otherEducation: e.target.value })}
+                            className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
+                            required
+                        />
+                    )}
+                    <button
+                        type="submit"
+                        className="w-full bg-black text-white p-2 rounded-lg font-serif font-semibold transition hover:bg-gray-800"
+                    >
+                        Sign Up
+                    </button>
+                </form>
+                <p className="mt-4 text-center text-black">
+                    Already a member? <span onClick={() => navigate('menteeLogin')} className="text-black font-bold hover:text-black cursor-pointer">Log In</span>
+                </p>
+            </div>
+        </div>
+    );
 }
 
 // --- Mentor Dashboard Component ---
 function MentorDashboard() {
-  const [activeMenu, setActiveMenu] = useState('My Mentees');
-  const menuItems = ['My Mentees', 'Schedules', 'Resources', 'Messages', 'Announcements'];
+    const [activeMenu, setActiveMenu] = useState('My Mentees');
+    const menuItems = ['My Mentees', 'Schedules', 'Resources', 'Messages', 'Announcements'];
 
-  const renderContent = () => {
-    switch (activeMenu) {
-      case 'My Mentees': return <div className="text-black">Mentees list and details...</div>;
-      case 'Schedules': return <div className="text-black">Schedules and booking calendar...</div>;
-      case 'Resources': return <div className="text-black">Resource library for mentees...</div>;
-      case 'Messages': return <div className="text-black">Message inbox...</div>;
-      case 'Announcements': return <div className="text-black">Announcements from the admin...</div>;
-      default: return <div className="text-black">Welcome to your dashboard!</div>;
-    }
-  };
+    const renderContent = () => {
+        switch (activeMenu) {
+            case 'My Mentees': return <div className="text-black">Mentees list and details...</div>;
+            case 'Schedules': return <div className="text-black">Schedules and booking calendar...</div>;
+            case 'Resources': return <div className="text-black">Resource library for mentees...</div>;
+            case 'Messages': return <div className="text-black">Message inbox...</div>;
+            case 'Announcements': return <div className="text-black">Announcements from the admin...</div>;
+            default: return <div className="text-black">Welcome to your dashboard!</div>;
+        }
+    };
 
-  return (
-    <div className="min-h-screen flex bg-blue-100 font-sans">
-      <aside className="w-64 bg-black text-white p-6 flex flex-col items-center">
-        <div className="text-center mb-10">
-          <h2 className="text-2xl font-bold font-serif">BRIDGE2RISE</h2>
-          <p className="text-sm">Mentor Dashboard</p>
+    return (
+        <div className="min-h-screen flex bg-blue-100 font-sans">
+            <aside className="w-64 bg-black text-white p-6 flex flex-col items-center">
+                <div className="text-center mb-10">
+                    <h2 className="text-2xl font-bold font-serif">BRIDGE2RISE</h2>
+                    <p className="text-sm">Mentor Dashboard</p>
+                </div>
+                <nav className="w-full space-y-2">
+                    {menuItems.map((item) => (
+                        <button
+                            key={item}
+                            onClick={() => setActiveMenu(item)}
+                            className={`w-full flex items-center space-x-3 p-3 rounded-lg font-medium transition-colors duration-200 ${activeMenu === item ? 'bg-blue-100 text-black shadow-md' : 'text-white hover:bg-white hover:text-black'}`}
+                        >
+                            {item === 'My Mentees' && <MentorsIcon />}
+                            {item === 'Schedules' && <SchedulesIcon />}
+                            {item === 'Resources' && <ResourcesIcon />}
+                            {item === 'Messages' && <MessagesIcon />}
+                            {item === 'Announcements' && <AnnouncementIcon />}
+                            <span>{item}</span>
+                        </button>
+                    ))}
+                </nav>
+            </aside>
+            <main className="flex-1 p-8 overflow-y-auto">
+                <header className="flex justify-between items-center mb-8">
+                    <h1 className="text-3xl font-bold text-black">Dashboard</h1>
+                    <div className="flex items-center space-x-4">
+                        <button className="relative text-black hover:text-white transition-colors duration-200">
+                            <NotificationsIcon />
+                            <span className="absolute top-0 right-0 w-2 h-2 bg-black rounded-full animate-ping"></span>
+                        </button>
+                        <button className="flex items-center space-x-2 text-black hover:text-white transition-colors duration-200">
+                            <ProfileIcon />
+                            <span>Profile</span>
+                        </button>
+                    </div>
+                </header>
+                <div className="bg-white p-6 rounded-lg shadow-md">
+                    <h2 className="text-xl font-semibold mb-4 text-black">{activeMenu}</h2>
+                    {renderContent()}
+                </div>
+            </main>
         </div>
-        <nav className="w-full space-y-2">
-          {menuItems.map((item) => (
-            <button
-              key={item}
-              onClick={() => setActiveMenu(item)}
-              className={`w-full flex items-center space-x-3 p-3 rounded-lg font-medium transition-colors duration-200 ${activeMenu === item ? 'bg-blue-100 text-black shadow-md' : 'text-white hover:bg-white hover:text-black'}`}
-            >
-              {item === 'My Mentees' && <MentorsIcon />}
-              {item === 'Schedules' && <SchedulesIcon />}
-              {item === 'Resources' && <ResourcesIcon />}
-              {item === 'Messages' && <MessagesIcon />}
-              {item === 'Announcements' && <AnnouncementIcon />}
-              <span>{item}</span>
-            </button>
-          ))}
-        </nav>
-      </aside>
-      <main className="flex-1 p-8 overflow-y-auto">
-        <header className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold text-black">Dashboard</h1>
-          <div className="flex items-center space-x-4">
-            <button className="relative text-black hover:text-white transition-colors duration-200">
-              <NotificationsIcon />
-              <span className="absolute top-0 right-0 w-2 h-2 bg-black rounded-full animate-ping"></span>
-            </button>
-            <button className="flex items-center space-x-2 text-black hover:text-white transition-colors duration-200">
-              <ProfileIcon />
-              <span>Profile</span>
-            </button>
-          </div>
-        </header>
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-xl font-semibold mb-4 text-black">{activeMenu}</h2>
-          {renderContent()}
-        </div>
-      </main>
-    </div>
-  );
+    );
 }
 
 // --- Mentee Dashboard Component ---
 function MenteeDashboard() {
-  const [activeMenu, setActiveMenu] = useState('My Mentors');
-  const menuItems = ['My Mentors', 'Schedules', 'Resources', 'Messages', 'Announcements'];
+    const [activeMenu, setActiveMenu] = useState('My Mentors');
+    const menuItems = ['My Mentors', 'Schedules', 'Resources', 'Messages', 'Announcements'];
 
-  const renderContent = () => {
-    switch (activeMenu) {
-      case 'My Mentors': return <div className="text-black">Mentors list and details...</div>;
-      case 'Schedules': return <div className="text-black">Schedules and booking calendar...</div>;
-      case 'Resources': return <div className="text-black">Resource library...</div>;
-      case 'Messages': return <div className="text-black">Message inbox...</div>;
-      case 'Announcements': return <div className="text-black">Announcements...</div>;
-      default: return <div className="text-black">Welcome to your dashboard!</div>;
-    }
-  };
+    const renderContent = () => {
+        switch (activeMenu) {
+            case 'My Mentors': return <div className="text-black">Mentors list and details...</div>;
+            case 'Schedules': return <div className="text-black">Schedules and booking calendar...</div>;
+            case 'Resources': return <div className="text-black">Resource library...</div>;
+            case 'Messages': return <div className="text-black">Message inbox...</div>;
+            case 'Announcements': return <div className="text-black">Announcements...</div>;
+            default: return <div className="text-black">Welcome to your dashboard!</div>;
+        }
+    };
 
-  return (
-    <div className="min-h-screen flex bg-blue-100 font-sans">
-      <aside className="w-64 bg-black text-white p-6 flex flex-col items-center">
-        <div className="text-center mb-10">
-          <h2 className="text-2xl font-bold font-serif">BRIDGE2RISE</h2>
-          <p className="text-sm">Mentee Dashboard</p>
+    return (
+        <div className="min-h-screen flex bg-blue-100 font-sans">
+            <aside className="w-64 bg-black text-white p-6 flex flex-col items-center">
+                <div className="text-center mb-10">
+                    <h2 className="text-2xl font-bold font-serif">BRIDGE2RISE</h2>
+                    <p className="text-sm">Mentee Dashboard</p>
+                </div>
+                <nav className="w-full space-y-2">
+                    {menuItems.map((item) => (
+                        <button
+                            key={item}
+                            onClick={() => setActiveMenu(item)}
+                            className={`w-full flex items-center space-x-3 p-3 rounded-lg font-medium transition-colors duration-200 ${activeMenu === item ? 'bg-blue-100 text-black shadow-md' : 'text-white hover:bg-white hover:text-black'}`}
+                        >
+                            {item === 'My Mentors' && <MentorsIcon />}
+                            {item === 'Schedules' && <SchedulesIcon />}
+                            {item === 'Resources' && <ResourcesIcon />}
+                            {item === 'Messages' && <MessagesIcon />}
+                            {item === 'Announcements' && <AnnouncementIcon />}
+                            <span>{item}</span>
+                        </button>
+                    ))}
+                </nav>
+            </aside>
+            <main className="flex-1 p-8 overflow-y-auto">
+                <header className="flex justify-between items-center mb-8">
+                    <h1 className="text-3xl font-bold text-black">Dashboard</h1>
+                    <div className="flex items-center space-x-4">
+                        <button className="relative text-black hover:text-white transition-colors duration-200">
+                            <NotificationsIcon />
+                            <span className="absolute top-0 right-0 w-2 h-2 bg-black rounded-full animate-ping"></span>
+                        </button>
+                        <button className="flex items-center space-x-2 text-black hover:text-white transition-colors duration-200">
+                            <ProfileIcon />
+                            <span>Profile</span>
+                        </button>
+                    </div>
+                </header>
+                <div className="bg-white p-6 rounded-lg shadow-md">
+                    <h2 className="text-xl font-semibold mb-4 text-black">{activeMenu}</h2>
+                    {renderContent()}
+                </div>
+            </main>
         </div>
-        <nav className="w-full space-y-2">
-          {menuItems.map((item) => (
-            <button
-              key={item}
-              onClick={() => setActiveMenu(item)}
-              className={`w-full flex items-center space-x-3 p-3 rounded-lg font-medium transition-colors duration-200 ${activeMenu === item ? 'bg-blue-100 text-black shadow-md' : 'text-white hover:bg-white hover:text-black'}`}
-            >
-              {item === 'My Mentors' && <MentorsIcon />}
-              {item === 'Schedules' && <SchedulesIcon />}
-              {item === 'Resources' && <ResourcesIcon />}
-              {item === 'Messages' && <MessagesIcon />}
-              {item === 'Announcements' && <AnnouncementIcon />}
-              <span>{item}</span>
-            </button>
-          ))}
-        </nav>
-      </aside>
-      <main className="flex-1 p-8 overflow-y-auto">
-        <header className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold text-black">Dashboard</h1>
-          <div className="flex items-center space-x-4">
-            <button className="relative text-black hover:text-white transition-colors duration-200">
-              <NotificationsIcon />
-              <span className="absolute top-0 right-0 w-2 h-2 bg-black rounded-full animate-ping"></span>
-            </button>
-            <button className="flex items-center space-x-2 text-black hover:text-white transition-colors duration-200">
-              <ProfileIcon />
-              <span>Profile</span>
-            </button>
-          </div>
-        </header>
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-xl font-semibold mb-4 text-black">{activeMenu}</h2>
-          {renderContent()}
-        </div>
-      </main>
-    </div>
-  );
+    );
 }
 
 // --- Main App Component ---
 export default function All() {
-  const [currentPage, setCurrentPage] = useState('hero');
+    const [currentPage, setCurrentPage] = useState('hero');
 
-  const navigate = (page) => {
-    setCurrentPage(page);
-  };
-
-  useEffect(() => {
-    const handleHashChange = () => {
-      const page = window.location.hash.substring(1) || 'hero';
-      setCurrentPage(page);
+    const navigate = (page) => {
+        setCurrentPage(page);
     };
-    window.addEventListener('hashchange', handleHashChange);
-    handleHashChange();
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
 
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'hero':
-        return (
-          <>
-            <Navbar navigate={navigate} />
-            <Hero navigate={navigate} />
-            <Footer />
-          </>
-        );
-      case 'mentorLogin':
-        return (
-          <>
-            <Navbar navigate={navigate} />
-            <MentorLogin navigate={navigate} />
-            <Footer />
-          </>
-        );
-      case 'menteeLogin':
-        return (
-          <>
-            <Navbar navigate={navigate} />
-            <MenteeLogin navigate={navigate} />
-            <Footer />
-          </>
-        );
-      case 'diasporaSignup':
-        return (
-          <>
-            <Navbar navigate={navigate} />
-            <DiasporaSignin navigate={navigate} />
-            <Footer />
-          </>
-        );
-      case 'menteeSignup':
-        return (
-          <>
-            <Navbar navigate={navigate} />
-            <MenteeSignin navigate={navigate} />
-            <Footer />
-          </>
-        );
-      case 'mentorDashboard':
-        return (
-          <>
-            <MentorDashboard />
-          </>
-        );
-      case 'menteeDashboard':
-        return (
-          <>
-            <MenteeDashboard />
-          </>
-        );
-      default:
-        return <p>Page not found.</p>;
-    }
-  };
+    useEffect(() => {
+        const handleHashChange = () => {
+            const page = window.location.hash.substring(1) || 'hero';
+            setCurrentPage(page);
+        };
+        window.addEventListener('hashchange', handleHashChange);
+        handleHashChange();
+        return () => window.removeEventListener('hashchange', handleHashChange);
+    }, []);
 
-  return <div className="font-sans antialiased">{renderPage()}</div>;
+    const renderPage = () => {
+        switch (currentPage) {
+            case 'hero':
+                return (
+                    <>
+                        <Navbar navigate={navigate} />
+                        <Hero navigate={navigate} />
+                        <Footer />
+                    </>
+                );
+            case 'mentorLogin':
+                return (
+                    <>
+                        <Navbar navigate={navigate} />
+                        <MentorLogin navigate={navigate} />
+                        <Footer />
+                    </>
+                );
+            case 'menteeLogin':
+                return (
+                    <>
+                        <Navbar navigate={navigate} />
+                        <MenteeLogin navigate={navigate} />
+                        <Footer />
+                    </>
+                );
+            case 'diasporaSignup':
+                return (
+                    <>
+                        <Navbar navigate={navigate} />
+                        <DiasporaSignin navigate={navigate} />
+                        <Footer />
+                    </>
+                );
+            case 'menteeSignup':
+                return (
+                    <>
+                        <Navbar navigate={navigate} />
+                        <MenteeSignin navigate={navigate} />
+                        <Footer />
+                    </>
+                );
+            case 'mentorDashboard':
+                return (
+                    <>
+                        <MentorDashboard />
+                    </>
+                );
+            case 'menteeDashboard':
+                return (
+                    <>
+                        <MenteeDashboard />
+                    </>
+                );
+            default:
+                return <p>Page not found.</p>;
+        }
+    };
+
+    return <div className="font-sans antialiased">{renderPage()}</div>;
 }
