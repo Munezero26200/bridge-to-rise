@@ -212,7 +212,7 @@ const ProfileForm = () => {
             {/* Submit */}
             <button
               type="submit"
-              className="w-full bg-blue-600 font-serif text-white py-2 mr-36 rounded hover:bg-blue-900"
+              className="w-full bg-black font-serif text-white py-2 mr-36 rounded"
             >
               Save Changes
             </button>
@@ -248,7 +248,7 @@ const ProfileForm = () => {
 
             <button
               onClick={() => setSubmitted(false)}
-              className="mt-4 w-full bg-blue-600 text-white font-serif py-2 rounded hover:bg-blue-900"
+              className="mt-4 w-full bg-black text-white font-serif py-2 rounded"
             >
               Edit Profile
             </button>
