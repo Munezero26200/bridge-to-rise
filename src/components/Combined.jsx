@@ -35,6 +35,7 @@ const MessagesIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" fill="none" 
 const AnnouncementIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>);
 const NotificationsIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 5.165 6 7.64 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0a3 3 0 11-6 0h6zm-6 0h6" /></svg>);
 const ProfileIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>);
+const DownloadIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>);
 
 // --- Navbar Component ---
 function Navbar({ navigate }) {
@@ -521,6 +522,217 @@ function MenteeSignin({ navigate }) {
     );
 }
 
+// --- Dashboard Components ---
+function MyMentees() {
+    return (
+        <div>
+            <h2 className="text-3xl font-bold text-black mb-6">My Mentees</h2>
+            <div className="font-sans grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className=" p-6 rounded-xl shadow-md border border-gray-200">
+                    <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center font-bold text-black">JD</div>
+                        <div>
+                            <h3 className="text-lg font-bold text-black">Jane Doe</h3>
+                            <p className="text-sm text-gray-600">Career: Software Engineering</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="p-6 rounded-xl shadow-md border border-gray-200">
+                    <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center font-bold text-black">SM</div>
+                        <div>
+                            <h3 className="text-lg font-bold text-black">Samson Mbaye</h3>
+                            <p className="text-sm text-gray-600">Career: Product Management</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function Schedules() {
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const dates = Array.from({ length: 30 }, (_, i) => i + 1);
+
+    return (
+        <div className="text-black">
+            <h3 className="text-xl font-semibold mb-4">Schedules</h3>
+            <div className="flex justify-between items-center mb-4">
+                <h4 className="text-lg">November 2025</h4>
+                <div className="flex space-x-2">
+                    <button className="bg-gray-200 text-black px-3 py-1 rounded-full">&lt;</button>
+                    <button className="bg-gray-200 text-black px-3 py-1 rounded-full">&gt;</button>
+                </div>
+            </div>
+            <div className="grid grid-cols-7 text-center font-bold">
+                {days.map(day => <div key={day} className="py-2">{day}</div>)}
+            </div>
+            <div className="grid grid-cols-7 text-center">
+                {dates.map(date => (
+                    <div key={date} className={`p-2 border rounded-xl m-1 ${date === 15 ? 'bg-black text-white' : 'hover:bg-gray-200'}`}>
+                        {date}
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+}
+
+function Resources() {
+    return (
+        <div>
+            <h2 className="text-3xl font-bold text-black mb-6">Resources</h2>
+            <div className="p-6 rounded-xl shadow-md border border-gray-200">
+                <div className="mb-4">
+                    <p className="text-gray-600 mb-2">Upload a new resource:</p>
+                    <input type="file" className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-blue-100 file:text-blue-600 hover:file:bg-blue-200" />
+                </div>
+                <div>
+                    <h3 className="text-xl font-bold text-black mb-2">My Uploaded Resources</h3>
+                    <ul className="space-y-2">
+                        <li className="p-3 bg-gray-100 rounded-lg flex justify-between items-center">
+                            <span className="text-black">Resume_Writing_Guide.pdf</span>
+                            <button className="text-red-500 hover:text-red-700">Remove</button>
+                        </li>
+                        <li className="p-3 bg-gray-100 rounded-lg flex justify-between items-center">
+                            <span className="text-black">Interview_Tips.docx</span>
+                            <button className="text-red-500 hover:text-red-700">Remove</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    );
+}
+function Resourcess(){
+return (
+          <div>
+            <h2 className="text-3xl font-bold text-black mb-6">Resources</h2>
+            <div className="bg-white p-6 rounded-xl shadow-md border border-blue-100">
+              <h3 className="text-xl font-bold text-black mb-2">My Resources</h3>
+              <ul className="space-y-2">
+                <li className="p-3 bg-blue-100 rounded-lg flex justify-between items-center">
+                  <span className="text-black">Resume_Writing_Guide.pdf</span>
+                  <button className="text-black hover:text-blue-500 transition-colors duration-200 flex items-center space-x-1">
+                    <DownloadIcon />
+                    <span>Download</span>
+                  </button>
+                </li>
+                <li className="p-3 bg-blue-100 rounded-lg flex justify-between items-center">
+                  <span className="text-black">Interview_Tips.docx</span>
+                  <button className="text-black hover:text-blue-500 transition-colors duration-200 flex items-center space-x-1">
+                    <DownloadIcon />
+                    <span>Download</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>    
+)};
+function Messages() {
+    const [messages, setMessages] = useState([
+        { sender: 'Mentee', text: 'Hi, I have a question about my project.', timestamp: '10:00 AM' },
+        { sender: 'Mentor', text: 'Sure, what do you need help with?', timestamp: '10:01 AM' },
+    ]);
+    const [newMessage, setNewMessage] = useState('');
+
+    const handleSendMessage= () => {
+        if (newMessage.trim()) {
+            setMessages([...messages, { sender: 'Mentor', text: newMessage, timestamp: '10:02 AM' }]);
+            setNewMessage('');
+        }
+    };
+
+    const handleFileUpload = () => {
+        console.log("Document upload simulated.");
+    };
+
+    const handleAudioCall = () => {
+        console.log("Audio call simulated.");
+    };
+
+    const handleVideoCall = () => {
+        console.log("Video call simulated.");
+    };
+
+    return (
+        <div>
+            <h2 className="text-3xl font-bold text-black mb-6">Messages</h2>
+            <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200 flex h-96">
+                {/* Conversation List */}
+                <div className="w-1/3 border-r border-gray-200 overflow-y-auto">
+                    <h3 className="text-xl font-bold text-black mb-4">Conversations</h3>
+                    <ul className="space-y-2">
+                        <li className="p-3 rounded-lg hover:bg-gray-100 cursor-pointer">
+                            <div className="flex items-center space-x-3">
+                                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-black font-bold">JD</div>
+                                <div className="flex-1">
+                                    <p className="text-black font-semibold">Jane Doe</p>
+                                    <p className="text-xs text-gray-500 truncate">Last message...</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li className="p-3 rounded-lg hover:bg-gray-100 cursor-pointer">
+                            <div className="flex items-center space-x-3">
+                                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-black font-bold">SM</div>
+                                <div className="flex-1">
+                                    <p className="text-black font-semibold">Samson Mbaye</p>
+                                    <p className="text-xs text-gray-500 truncate">Last message...</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                {/* Chat Window */}
+                <div className="flex-1 p-4 flex flex-col">
+                    <div className="flex-1 overflow-y-auto">
+                        {/* Chat messages will go here */}
+                        <div className="text-center text-gray-500 my-4">No messages yet.</div>
+                    </div>
+                    <div className="mt-4 flex space-x-2">
+                        <input type="text" placeholder="Type a message..." className="flex-1 px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-100" />
+                        <button className="bg-blue-100 hover:font-bold px-4 py-2 rounded-xl">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function Announcements() {
+    return (
+        <div>
+            <h2 className="text-3xl font-bold text-black mb-6">Announcements</h2>
+            <div className="p-6 rounded-xl shadow-md border border-gray-200">
+                <textarea placeholder="Write your announcement here..." rows="6" className="w-full p-4 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-100"></textarea>
+                <button className="mt-4 w-full border-2 border-gray-200 bg-white px-4 py-2 rounded-xl hover:bg-blue-100 transition-colors duration-200">
+                    Send Announcement to all Mentees
+                </button>
+            </div>
+        </div>
+    );
+}
+function Announcementss(){
+    return (
+        <div>
+            <h2 className="text-3xl font-bold text-black mb-6">Announcements</h2>
+            <div className="bg-white p-6 rounded-xl shadow-md border border-blue-100">
+              <ul className="space-y-4">
+                <li className="p-4 bg-blue-100 rounded-lg">
+                  <p className="font-semibold text-black mb-1">Weekly check-in meeting on Friday.</p>
+                  <p className="text-sm text-black">Please be ready to discuss your progress and any roadblocks you've encountered.</p>
+                </li>
+                <li className="p-4 bg-blue-100 rounded-lg">
+                  <p className="font-semibold text-black mb-1">New resource available: "Effective Communication in the Workplace."</p>
+                  <p className="text-sm text-black">I've uploaded a new guide to the resources section. Let me know what you think!</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+    );
+}
+
 // --- Mentor Dashboard Component ---
 function MentorDashboard() {
     const [activeMenu, setActiveMenu] = useState('My Mentees');
@@ -528,18 +740,18 @@ function MentorDashboard() {
 
     const renderContent = () => {
         switch (activeMenu) {
-            case 'My Mentees': return <div className="text-black">Mentees list and details...</div>;
-            case 'Schedules': return <div className="text-black">Schedules and booking calendar...</div>;
-            case 'Resources': return <div className="text-black">Resource library for mentees...</div>;
-            case 'Messages': return <div className="text-black">Message inbox...</div>;
-            case 'Announcements': return <div className="text-black">Announcements from the admin...</div>;
+            case 'My Mentees': return <MyMentees />;
+            case 'Schedules': return <Schedules />;
+            case 'Resources': return <Resources />;
+            case 'Messages': return <Messages />;
+            case 'Announcements': return <Announcements />;
             default: return <div className="text-black">Welcome to your dashboard!</div>;
         }
     };
 
     return (
-        <div className="min-h-screen flex bg-blue-100 font-sans">
-            <aside className="w-64 bg-black text-white p-6 flex flex-col items-center">
+        <div className="min-h-screen flex  font-sans">
+            <aside className="w-64 bg-blue-100 text-black p-6 flex flex-col items-center">
                 <div className="text-center mb-10">
                     <h2 className="text-2xl font-bold font-serif">BRIDGE2RISE</h2>
                     <p className="text-sm">Mentor Dashboard</p>
@@ -575,8 +787,7 @@ function MentorDashboard() {
                         </button>
                     </div>
                 </header>
-                <div className="bg-white p-6 rounded-lg shadow-md">
-                    <h2 className="text-xl font-semibold mb-4 text-black">{activeMenu}</h2>
+                <div className="bg-white p-6 rounded-lg shadow-md h-5/6">
                     {renderContent()}
                 </div>
             </main>
@@ -585,24 +796,52 @@ function MentorDashboard() {
 }
 
 // --- Mentee Dashboard Component ---
+function MyMentors() {
+    return (
+        <div>
+            <h2 className="text-3xl font-bold text-black mb-6">My Mentors</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="bg-white p-6 rounded-xl shadow-md border border-blue-100">
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center font-bold text-black">JD</div>
+                  <div>
+                    <h3 className="text-lg font-bold text-black">John Doe</h3>
+                    <p className="text-sm text-black">Field: Software Engineering</p>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-white p-6 rounded-xl shadow-md border border-blue-100">
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center font-bold text-black">SM</div>
+                  <div>
+                    <h3 className="text-lg font-bold text-black">Sarah Mbote</h3>
+                    <p className="text-sm text-black">Field: Product Management</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    );
+}
+
 function MenteeDashboard() {
     const [activeMenu, setActiveMenu] = useState('My Mentors');
     const menuItems = ['My Mentors', 'Schedules', 'Resources', 'Messages', 'Announcements'];
 
     const renderContent = () => {
         switch (activeMenu) {
-            case 'My Mentors': return <div className="text-black">Mentors list and details...</div>;
-            case 'Schedules': return <div className="text-black">Schedules and booking calendar...</div>;
-            case 'Resources': return <div className="text-black">Resource library...</div>;
-            case 'Messages': return <div className="text-black">Message inbox...</div>;
-            case 'Announcements': return <div className="text-black">Announcements...</div>;
+            case 'My Mentors': return <MyMentors />;
+            case 'Schedules': return <Schedules />;
+            case 'Resources': return <Resourcess/>;
+            case 'Messages': return <Messages />;
+            case 'Announcements': return <Announcementss />;
             default: return <div className="text-black">Welcome to your dashboard!</div>;
         }
     };
 
     return (
-        <div className="min-h-screen flex bg-blue-100 font-sans">
-            <aside className="w-64 bg-black text-white p-6 flex flex-col items-center">
+        <div className="min-h-screen flex  font-sans">
+            <aside className="w-64 bg-blue-100 text-black p-6 flex flex-col items-center">
                 <div className="text-center mb-10">
                     <h2 className="text-2xl font-bold font-serif">BRIDGE2RISE</h2>
                     <p className="text-sm">Mentee Dashboard</p>
@@ -638,14 +877,14 @@ function MenteeDashboard() {
                         </button>
                     </div>
                 </header>
-                <div className="bg-white p-6 rounded-lg shadow-md">
-                    <h2 className="text-xl font-semibold mb-4 text-black">{activeMenu}</h2>
+                <div className="bg-white p-6 rounded-lg shadow-md h-5/6">
                     {renderContent()}
                 </div>
             </main>
         </div>
     );
 }
+
 
 // --- Main App Component ---
 export default function All() {
