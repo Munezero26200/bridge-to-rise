@@ -1,5 +1,5 @@
 import Navbar from "./components/navbar"
-import LoginPage from "./components/loginPage"
+import LoginPage from "./components/loginMentor"
 import MenteeLogin from "./components/loginMentee"
 import DiasporaSignin from "./components/diasporaSign"
 import MenteeSignin from "./components/MenteeSignIn"
@@ -21,8 +21,8 @@ export default function App() {
     < Hero/>
     <MentorDashboard />
     <MenteeDashboard />
-    <Footer />
     <MenteeProfile/>
+    <Footer />
    </>
   )
 }

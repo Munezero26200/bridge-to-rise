@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const ProfileForm = () => {
+const MenteeProfile = () => {
   const [formData, setFormData] = useState({
     fullName: "",
     country: "",
@@ -259,4 +259,4 @@ const ProfileForm = () => {
   );
 };
 
-export default ProfileForm;
+export default MenteeProfile;
