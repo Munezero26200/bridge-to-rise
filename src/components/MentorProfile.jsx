@@ -1,196 +1,283 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-export default function MentorProfile() {
-  const [profile, setProfile] = useState({
+const MentorProfile = () => {
+  const [formData, setFormData] = useState({
     fullName: "",
     country: "",
     field: "",
+    otherField: "",
     topics: "",
     topicsOther: "",
     availability: "",
     language: "",
     bio: "",
-    photo: "",
+    photo: null,
   });
 
-  const [isEditing, setIsEditing] = useState(true); // start with form view
+  const [previewUrl, setPreviewUrl] = useState(null);
+  const [submitted, setSubmitted] = useState(false);
+
+  const professionalFields = [
+    "Information Technology (IT)",
+    "Business & Entrepreneurship",
+    "Healthcare & Medicine",
+    "Education & Research",
+    "Engineering & Architecture",
+    "Tourism & Hospitality Management",
+    "Other",
+  ];
+
+  const mentorshipTopics = ["Career advice", "Job search", "Entrepreneurship", "Other"];
+
+  const languagesOptions = ["English", "French", "Kiswahili", "Other"];
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handlePhotoUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => setProfile({ ...profile, photo: reader.result });
-      reader.readAsDataURL(file);
+      setFormData((prev) => ({ ...prev, photo: file }));
+      setPreviewUrl(URL.createObjectURL(file));
     }
   };
 
-  const handleSave = () => {
-    setIsEditing(false); // switch to profile view
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
   };
-
-  const handleEdit = () => {
-    setIsEditing(true); // back to form
-  };
-
-  const hasData = Object.values(profile).some((value) => value && value !== "");
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-blue-100 rounded-2xl shadow-lg border border-gray-200">
-      {isEditing ? (
-        // ========== Form View ==========
-        <div className="space-y-4">
-          <div className="flex flex-col items-center">
-            {profile.photo ? (
-              <img
-                src={profile.photo}
-                alt="Profile"
-                className="w-32 h-32 rounded-full object-cover mb-4"
+    <div className="min-h-screen bg-white flex items-center justify-center py-10">
+      <div className="w-full max-w-lg bg-blue-100 rounded-lg shadow-md p-6">
+        {!submitted ? (
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Profile Photo */}
+            <div className="flex flex-col items-center">
+              {previewUrl ? (
+                <img
+                  src={previewUrl}
+                  alt="Profile Preview"
+                  className="w-32 h-32 rounded-full object-cover border-2 border-gray-400"
+                />
+              ) : (
+                <div className="w-32 h-32 flex items-center justify-center rounded-full bg-gray-200 text-gray-500">
+                  No Photo
+                </div>
+              )}
+
+              {/* Hidden file input */}
+              <input
+                type="file"
+                accept="image/*"
+                id="photoUpload"
+                onChange={handlePhotoUpload}
+                className="hidden"
               />
-            ) : (
-              <div className="w-32 h-32 font-serif rounded-full bg-white flex items-center justify-center mb-4 text-sm text-gray-500">
+
+              {/* Styled upload button */}
+              <label
+                htmlFor="photoUpload"
+                className="mt-3 px-4 py-2 bg-black text-white rounded-lg cursor-pointer hover:bg-gray-800 transition font-serif"
+              >
                 Upload Photo
-              </div>
-            )}
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handlePhotoUpload}
-              className="mb-4"
-            />
-          </div>
+              </label>
+            </div>
 
-          <input
-            type="text"
-            placeholder="Full Name"
-            value={profile.fullName}
-            onChange={(e) => setProfile({ ...profile, fullName: e.target.value })}
-            className="w-full border rounded p-2"
-          />
+            {/* Full Name */}
+            <div>
+              <label className="block font-medium font-serif">Full Name</label>
+              <input
+                type="text"
+                name="fullName"
+                value={formData.fullName}
+                onChange={handleChange}
+                className="w-full mt-1 p-2 border rounded font-serif"
+                required
+              />
+            </div>
 
-          <input
-            type="text"
-            placeholder="Country of Residence"
-            value={profile.country}
-            onChange={(e) => setProfile({ ...profile, country: e.target.value })}
-            className="w-full border rounded p-2"
-          />
+            {/* Country */}
+            <div>
+              <label className="block font-medium font-serif">Country of Residence</label>
+              <input
+                type="text"
+                name="country"
+                value={formData.country}
+                onChange={handleChange}
+                className="w-full mt-1 p-2 border rounded font-serif"
+                required
+              />
+            </div>
 
-          <select
-            value={profile.field}
-            onChange={(e) => setProfile({ ...profile, field: e.target.value })}
-            className="w-full font-serif border rounded p-2"
-          >
-            <option value="" className="text-gray-200">Professional field</option>
-            <option>Information Technology (IT)</option>
-            <option>Business & Entrepreneurship</option>
-            <option>Healthcare & Medicine</option>
-            <option>Education & Research</option>
-            <option>Engineering & Architecture</option>
-            <option>Tourism & Hospitality Management</option>
-            <option>Others</option>
-          </select>
+            {/* Professional Field */}
+            <div>
+              <label className="block font-medium font-serif">Professional Field</label>
+              <select
+                name="field"
+                value={formData.field}
+                onChange={handleChange}
+                className="w-full mt-1 p-2 border rounded font-serif"
+                required
+              >
+                <option value="">Select...</option>
+                {professionalFields.map((field, i) => (
+                  <option key={i} value={field}>
+                    {field}
+                  </option>
+                ))}
+              </select>
+              {formData.field === "Other" && (
+                <input
+                  type="text"
+                  name="otherField"
+                  placeholder="Specify your field"
+                  value={formData.otherField}
+                  onChange={handleChange}
+                  className="w-full mt-2 p-2 border rounded font-serif"
+                />
+              )}
+            </div>
 
-          <select
-            value={profile.topics}
-            onChange={(e) => setProfile({ ...profile, topics: e.target.value })}
-            className="w-full font-serif border rounded p-2"
-          >
-            <option value="">Preferred mentorship topic</option>
-            <option>Career advice</option>
-            <option>Job search</option>
-            <option>Entrepreneurship</option>
-            <option>Other</option>
-          </select>
+            {/* Mentorship Topics */}
+            <div>
+              <label className="block font-medium font-serif">Preferred Mentorship Topic</label>
+              <select
+                name="topics"
+                value={formData.topics}
+                onChange={handleChange}
+                className="w-full mt-1 p-2 border rounded font-serif"
+              >
+                <option value="">Select...</option>
+                {mentorshipTopics.map((topic, i) => (
+                  <option key={i} value={topic}>
+                    {topic}
+                  </option>
+                ))}
+              </select>
+              {formData.topics === "Other" && (
+                <input
+                  type="text"
+                  name="topicsOther"
+                  placeholder="Specify topic"
+                  value={formData.topicsOther}
+                  onChange={handleChange}
+                  className="w-full mt-2 p-2 border rounded font-serif"
+                />
+              )}
+            </div>
 
-          {profile.topics === "Other" && (
-            <input
-              type="text"
-              placeholder="Enter other topic"
-              value={profile.topicsOther}
-              onChange={(e) =>
-                setProfile({ ...profile, topicsOther: e.target.value })
-              }
-              className="w-full border rounded p-2"
-            />
-          )}
+            {/* Availability */}
+            <div>
+              <label className="block font-medium font-serif">Availability (weekly hours)</label>
+              <input
+                type="text"
+                name="availability"
+                value={formData.availability}
+                onChange={handleChange}
+                className="w-full mt-1 p-2 border rounded font-serif"
+              />
+            </div>
 
-          <input
-            type="text"
-            placeholder="Availability (weekly hours)"
-            value={profile.availability}
-            onChange={(e) => setProfile({ ...profile, availability: e.target.value })}
-            className="w-full border rounded p-2"
-          />
+            {/* Languages */}
+            <div>
+              <label className="block font-medium font-serif">Languages Spoken</label>
+              <select
+                name="language"
+                value={formData.language}
+                onChange={handleChange}
+                className="w-full mt-1 p-2 border rounded font-serif"
+              >
+                <option value="">Select...</option>
+                {languagesOptions.map((lang, i) => (
+                  <option key={i} value={lang}>
+                    {lang}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-          <select
-            value={profile.language}
-            onChange={(e) => setProfile({ ...profile, language: e.target.value })}
-            className="w-full font-serif border rounded p-2"
-          >
-            <option value="" className="text-gray-200">Language spoken</option>
-            <option>English</option>
-            <option>French</option>
-            <option>Kiswahili</option>
-          </select>
+            {/* Bio */}
+            <div>
+              <label className="block font-medium font-serif">Bio</label>
+              <textarea
+                name="bio"
+                value={formData.bio}
+                onChange={handleChange}
+                className="w-full mt-1 p-2 border rounded font-serif"
+                rows="4"
+              />
+            </div>
 
-          <textarea
-            placeholder="Short Bio (2-3 lines)"
-            value={profile.bio}
-            onChange={(e) => setProfile({ ...profile, bio: e.target.value })}
-            className="w-full border rounded p-2"
-          />
-
-          <div className="flex justify-center mt-6">
+            {/* Submit */}
             <button
-              onClick={handleSave}
-              className="px-6 py-2 bg-blue-500 font-serif text-white rounded shadow hover:bg-blue-600"
+              type="submit"
+              className="w-full bg-black font-serif text-white py-2 rounded hover:bg-gray-800 transition"
             >
               Save Changes
             </button>
-          </div>
-        </div>
-      ) : (
-        // ========== Profile View ==========
-        <div className="flex flex-col items-center space-y-4 text-center">
-          {/* Photo */}
-          {profile.photo ? (
-            <img
-              src={profile.photo}
-              alt="Profile"
-              className="w-32 h-32 rounded-full object-cover shadow mb-4"
-            />
-          ) : (
-            <div className="w-32 h-32 rounded-full bg-gray-200 flex items-center justify-center mb-4 text-sm text-gray-500">
-              Profile Photo
-            </div>
-          )}
-
-          {/* Only show fields that have data */}
-          {hasData && (
-            <div className="space-y-1 bg-slate-300">
-              {profile.fullName && <h2 className="text-xl font-serif font-bold">{profile.fullName}</h2>}
-              {profile.country && <p>{profile.country}</p>}
-              {profile.field && <p className="text-blue-900 font-serif font-semibold">{profile.field}</p>}
-              {profile.topics && (
-                <p>{profile.topics === "Other" ? profile.topicsOther : profile.topics}</p>
+          </form>
+        ) : (
+          // Profile Preview after submission
+          <div className="space-y-6 text-center">
+            {/* Styled profile photo */}
+            <div className="flex justify-center">
+              {previewUrl && (
+                <div className="relative">
+                  <img
+                    src={previewUrl}
+                    alt="Profile"
+                    className="w-36 h-36 rounded-full object-cover border-4 border-black shadow-lg"
+                  />
+                </div>
               )}
-              {profile.availability && <p>Availability: {profile.availability}</p>}
-              {profile.language && <p>Language: {profile.language}</p>}
-              {profile.bio && <p className="text-gray-700">{profile.bio}</p>}
             </div>
-          )}
 
-          {/* Edit Button */}
-          <div className="flex justify-center mt-6">
+            {/* Name + Country */}
+            <div>
+              <h2 className="text-2xl font-bold font-serif text-black">
+                {formData.fullName}
+              </h2>
+              <p className="text-gray-700 font-serif">{formData.country}</p>
+            </div>
+
+            {/* Details */}
+            <div className="space-y-2 text-left bg-white p-4 rounded-lg shadow font-serif">
+              <p>
+                <span className="font-semibold">Professional Field:</span>{" "}
+                {formData.field === "Other" ? formData.otherField : formData.field}
+              </p>
+              <p>
+                <span className="font-semibold">Mentorship Topic:</span>{" "}
+                {formData.topics === "Other" ? formData.topicsOther : formData.topics}
+              </p>
+              <p>
+                <span className="font-semibold">Availability:</span>{" "}
+                {formData.availability}
+              </p>
+              <p>
+                <span className="font-semibold">Languages:</span>{" "}
+                {formData.language}
+              </p>
+              <p>
+                <span className="font-semibold">Bio:</span> {formData.bio}
+              </p>
+            </div>
+
+            {/* Edit button */}
             <button
-              onClick={handleEdit}
-              className="px-6 py-2 bg-blue-500 text-white rounded shadow hover:bg-blue-600"
+              onClick={() => setSubmitted(false)}
+              className="mt-4 w-full bg-black text-white font-serif py-2 rounded hover:bg-gray-800 transition"
             >
               Edit Profile
             </button>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
-}
+};
+
+export default MentorProfile;
