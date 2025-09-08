@@ -8,6 +8,7 @@
 // import MenteeDashboard from './components/MenteeDashboard'
 // import Footer from './components/footer'
 import All from './components/Combined'
+// import Bridge2RiseApp from './components/combined2'
 
 
 export default function App() {
@@ -22,7 +23,7 @@ export default function App() {
     <MentorDashboard />
     <MenteeDashboard />
     <Footer /> */}
-    < All />
+    <All />
    </>
   )
 }
