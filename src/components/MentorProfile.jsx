@@ -17,7 +17,8 @@ const MentorProfile = () => {
   const [previewUrl, setPreviewUrl] = useState(null);
   const [submitted, setSubmitted] = useState(false);
 
-  const professionalFields = [
+ 
+  const fields = [
     "Information Technology (IT)",
     "Business & Entrepreneurship",
     "Healthcare & Medicine",
@@ -28,9 +29,9 @@ const MentorProfile = () => {
   ];
 
   const mentorshipTopics = ["Career advice", "Job search", "Entrepreneurship", "Other"];
-
   const languagesOptions = ["English", "French", "Kiswahili", "Other"];
 
+  // Handlers
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -50,8 +51,8 @@ const MentorProfile = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center py-10">
-      <div className="w-full max-w-lg bg-blue-100 rounded-lg shadow-md p-6">
+    <div className="min-h-screen  flex items-center justify-center py-10">
+      <div className="w-full max-w-lg bg-white rounded-lg shadow-md p-6">
         {!submitted ? (
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Profile Photo */}
@@ -60,30 +61,28 @@ const MentorProfile = () => {
                 <img
                   src={previewUrl}
                   alt="Profile Preview"
-                  className="w-32 h-32 rounded-full object-cover border-2 border-gray-400"
+                  className="w-32 h-32 rounded-full object-cover border-2 border-gray-400 shadow-lg"
                 />
               ) : (
-                <div className="w-32 h-32 flex items-center justify-center rounded-full bg-gray-200 text-gray-500">
+                <div className="w-32 h-32 flex items-center justify-center rounded-full bg-gray-200 text-gray-500 border-2 border-gray-400 shadow-lg">
                   No Photo
                 </div>
               )}
 
-              {/* Hidden file input */}
-              <input
-                type="file"
-                accept="image/*"
-                id="photoUpload"
-                onChange={handlePhotoUpload}
-                className="hidden"
-              />
-
-              {/* Styled upload button */}
+              {/* Custom Upload Button */}
               <label
                 htmlFor="photoUpload"
-                className="mt-3 px-4 py-2 bg-black text-white rounded-lg cursor-pointer hover:bg-gray-800 transition font-serif"
+                className="mt-3 px-6 py-2 bg-blue-200 font-serif rounded-full shadow hover:bg-blue-300 cursor-pointer transition"
               >
                 Upload Photo
               </label>
+              <input
+                id="photoUpload"
+                type="file"
+                accept="image/*"
+                onChange={handlePhotoUpload}
+                className="hidden"
+              />
             </div>
 
             {/* Full Name */}
@@ -112,7 +111,7 @@ const MentorProfile = () => {
               />
             </div>
 
-            {/* Professional Field */}
+            {/* Field */}
             <div>
               <label className="block font-medium font-serif">Professional Field</label>
               <select
@@ -123,7 +122,7 @@ const MentorProfile = () => {
                 required
               >
                 <option value="">Select...</option>
-                {professionalFields.map((field, i) => (
+                {fields.map((field, i) => (
                   <option key={i} value={field}>
                     {field}
                   </option>
@@ -141,7 +140,7 @@ const MentorProfile = () => {
               )}
             </div>
 
-            {/* Mentorship Topics */}
+            {/* Mentorship Topic */}
             <div>
               <label className="block font-medium font-serif">Preferred Mentorship Topic</label>
               <select
@@ -161,7 +160,7 @@ const MentorProfile = () => {
                 <input
                   type="text"
                   name="topicsOther"
-                  placeholder="Specify topic"
+                  placeholder="Specify your topic"
                   value={formData.topicsOther}
                   onChange={handleChange}
                   className="w-full mt-2 p-2 border rounded font-serif"
@@ -214,32 +213,32 @@ const MentorProfile = () => {
             {/* Submit */}
             <button
               type="submit"
-              className="w-full bg-black font-serif text-white py-2 rounded hover:bg-gray-800 transition"
+              className="w-full bg-blue-100 font-serif  font-semibold py-2 rounded hover:bg-black hover:text-white transition"
             >
               Save Changes
             </button>
           </form>
         ) : (
-          // Profile Preview after submission
+          // Profile Preview
           <div className="space-y-6 text-center">
-            {/* Styled profile photo */}
+            {/* Profile Photo */}
             <div className="flex justify-center">
-              {previewUrl && (
-                <div className="relative">
-                  <img
-                    src={previewUrl}
-                    alt="Profile"
-                    className="w-36 h-36 rounded-full object-cover border-4 border-black shadow-lg"
-                  />
+              {previewUrl ? (
+                <img
+                  src={previewUrl}
+                  alt="Profile"
+                  className="w-36 h-36 rounded-full object-cover border-4 border-black shadow-lg"
+                />
+              ) : (
+                <div className="w-36 h-36 rounded-full bg-gray-200 flex items-center justify-center border-4 border-gray-400 shadow-lg text-gray-500">
+                  No Photo
                 </div>
               )}
             </div>
 
             {/* Name + Country */}
             <div>
-              <h2 className="text-2xl font-bold font-serif text-black">
-                {formData.fullName}
-              </h2>
+              <h2 className="text-2xl font-bold font-serif text-black">{formData.fullName}</h2>
               <p className="text-gray-700 font-serif">{formData.country}</p>
             </div>
 
@@ -254,12 +253,10 @@ const MentorProfile = () => {
                 {formData.topics === "Other" ? formData.topicsOther : formData.topics}
               </p>
               <p>
-                <span className="font-semibold">Availability:</span>{" "}
-                {formData.availability}
+                <span className="font-semibold">Availability:</span> {formData.availability}
               </p>
               <p>
-                <span className="font-semibold">Languages:</span>{" "}
-                {formData.language}
+                <span className="font-semibold">Languages:</span> {formData.language}
               </p>
               <p>
                 <span className="font-semibold">Bio:</span> {formData.bio}
