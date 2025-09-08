@@ -7,6 +7,7 @@ import Hero from './components/hero'
 import MentorDashboard from './components/mentorDashboard'
 import MenteeDashboard from './components/MenteeDashboard'
 import Footer from './components/footer'
+import MentorProfile from "./components/MentorProfile"
 
 
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
     <MentorDashboard />
     <MenteeDashboard />
     <Footer />
+    <MentorProfile/>
    </>
   )
 }
