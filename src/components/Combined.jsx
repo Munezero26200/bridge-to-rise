@@ -223,113 +223,113 @@ function MentorLogin({ navigate }) {
 
 // --- Mentee Login Component ---
 function MenteeLogin({ navigate }) {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    role: "Mentee",
-  });
-  const [message, setMessage] = useState(null);
+    const [formData, setFormData] = useState({
+        email: "",
+        password: "",
+        role: "Mentee",
+    });
+    const [message, setMessage] = useState(null);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    const email = formData.email.trim().toLowerCase();
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const email = formData.email.trim().toLowerCase();
 
-    // 1) Check if account exists
-    const existingUser = users.find((u) => u.email === email);
+        // 1) Check if account exists
+        const existingUser = users.find((u) => u.email === email);
 
-    if (!existingUser) {
-      setMessage("You don't have an account yet. Please sign up first.");
-      navigate("menteeSignup"); // redirect to signup
-      return;
-    }
+        if (!existingUser) {
+            setMessage("You don't have an account yet. Please sign up first.");
+            navigate("menteeSignup"); // redirect to signup
+            return;
+        }
 
-    // 2) Check role
-    if (existingUser.role !== "Mentee") {
-      setMessage(
-        `This email is registered as ${existingUser.role}. Please log in as ${existingUser.role}.`
-      );
-      return;
-    }
+        // 2) Check role
+        if (existingUser.role !== "Mentee") {
+            setMessage(
+                `This email is registered as ${existingUser.role}. Please log in as ${existingUser.role}.`
+            );
+            return;
+        }
 
-    // 3) Check password
-    if (existingUser.password !== formData.password) {
-      setMessage("Incorrect password. Try again.");
-      return;
-    }
+        // 3) Check password
+        if (existingUser.password !== formData.password) {
+            setMessage("Incorrect password. Try again.");
+            return;
+        }
 
-    // 4) Save session and go to dashboard
-    localStorage.setItem(
-      "authUser",
-      JSON.stringify({ email: existingUser.email, role: "Mentee" })
+        // 4) Save session and go to dashboard
+        localStorage.setItem(
+            "authUser",
+            JSON.stringify({ email: existingUser.email, role: "Mentee" })
+        );
+
+        setMessage(`Welcome ${formData.role}: ${formData.email}`);
+        navigate("menteeDashboard");
+    };
+
+    return (
+        <div className="min-h-screen flex items-center justify-center bg-blue-100 p-6">
+            <div className="w-full max-w-md bg-white shadow-md rounded-xl p-6">
+                <h2 className="text-xl font-semibold text-center mb-4 font-serif text-black">
+                    Mentee (Youth) Login
+                </h2>
+                {message && (
+                    <div className="bg-white text-black p-3 rounded-md mb-4 text-center">
+                        {message}
+                    </div>
+                )}
+                <form onSubmit={handleSubmit} className="space-y-4">
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={formData.email}
+                        onChange={(e) =>
+                            setFormData({ ...formData, email: e.target.value })
+                        }
+                        className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
+                        required
+                    />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={formData.password}
+                        onChange={(e) =>
+                            setFormData({ ...formData, password: e.target.value })
+                        }
+                        className="w-full border rounded-lg p-2 font-serif focus:outline-none focus:ring-2 focus:ring-black"
+                        required
+                    />
+                    <select
+                        value={formData.role}
+                        onChange={(e) =>
+                            setFormData({ ...formData, role: e.target.value })
+                        }
+                        className="w-full border rounded-lg p-2 font-serif focus:outline-none focus:ring-2 focus:ring-black"
+                    >
+                        <option value="Mentee">Local (Mentee)</option>
+                        <option value="Mentor">Diaspora (Mentor)</option>
+                    </select>
+                    <button
+                        type="submit"
+                        className="w-full bg-black text-white p-2 rounded-lg font-serif font-semibold transition hover:bg-gray-800"
+                    >
+                        Login
+                    </button>
+                </form>
+                <p className="mt-4 text-center text-black">
+                    Don't have an account?{" "}
+                    <span
+                        onClick={() => navigate("menteeSignup")}
+                        className="text-black font-bold hover:text-black cursor-pointer"
+                    >
+                        Sign Up
+                    </span>
+                </p>
+            </div>
+        </div>
     );
-
-    setMessage(`Welcome ${formData.role}: ${formData.email}`);
-    navigate("menteeDashboard");
-  };
-
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-blue-100 p-6">
-      <div className="w-full max-w-md bg-white shadow-md rounded-xl p-6">
-        <h2 className="text-xl font-semibold text-center mb-4 font-serif text-black">
-          Mentee (Youth) Login
-        </h2>
-        {message && (
-          <div className="bg-white text-black p-3 rounded-md mb-4 text-center">
-            {message}
-          </div>
-        )}
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
-            }
-            className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
-            required
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={(e) =>
-              setFormData({ ...formData, password: e.target.value })
-            }
-            className="w-full border rounded-lg p-2 font-serif focus:outline-none focus:ring-2 focus:ring-black"
-            required
-          />
-          <select
-            value={formData.role}
-            onChange={(e) =>
-              setFormData({ ...formData, role: e.target.value })
-            }
-            className="w-full border rounded-lg p-2 font-serif focus:outline-none focus:ring-2 focus:ring-black"
-          >
-            <option value="Mentee">Local (Mentee)</option>
-            <option value="Mentor">Diaspora (Mentor)</option>
-          </select>
-          <button
-            type="submit"
-            className="w-full bg-black text-white p-2 rounded-lg font-serif font-semibold transition hover:bg-gray-800"
-          >
-            Login
-          </button>
-        </form>
-        <p className="mt-4 text-center text-black">
-          Don't have an account?{" "}
-          <span
-            onClick={() => navigate("menteeSignup")}
-            className="text-black font-bold hover:text-black cursor-pointer"
-          >
-            Sign Up
-          </span>
-        </p>
-      </div>
-    </div>
-  );
 }
 
 
@@ -447,139 +447,139 @@ function DiasporaSignin({ navigate }) {
 
 // --- Mentee Sign Up Component ---
 function MenteeSignin({ navigate }) {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    password: "",
-    education: "",
-    otherEducation: "",
-    role: "Mentee", // add role for consistency
-  });
-  const [message, setMessage] = useState(null);
+    const [formData, setFormData] = useState({
+        fullName: "",
+        email: "",
+        password: "",
+        education: "",
+        otherEducation: "",
+        role: "Mentee", // add role for consistency
+    });
+    const [message, setMessage] = useState(null);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
-    if (!formData.education) {
-      setMessage("Please choose education level from the list.");
-      return;
-    }
-    if (formData.password.length < 6) {
-      setMessage("Password must be at least 6 characters.");
-      return;
-    }
+        if (!formData.education) {
+            setMessage("Please choose education level from the list.");
+            return;
+        }
+        if (formData.password.length < 6) {
+            setMessage("Password must be at least 6 characters.");
+            return;
+        }
 
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    const email = formData.email.trim().toLowerCase();
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const email = formData.email.trim().toLowerCase();
 
-    // Check if account already exists
-    const exists = users.some(
-      (u) => u.email === email && u.role === "Mentee"
+        // Check if account already exists
+        const exists = users.some(
+            (u) => u.email === email && u.role === "Mentee"
+        );
+        if (exists) {
+            setMessage("Account already exists! Please log in.");
+            navigate("menteeLogin");
+            return;
+        }
+
+        // Save new user
+        users.push({ ...formData, email });
+        localStorage.setItem("users", JSON.stringify(users));
+
+        setMessage(`Signup successful! Welcome ${formData.fullName}`);
+        navigate("menteeLogin"); // send them to login, not dashboard
+    };
+
+    return (
+        <div className="min-h-screen flex items-center justify-center bg-blue-100 p-6">
+            <div className="w-full max-w-md bg-white shadow-md rounded-xl p-6">
+                <h2 className="text-xl font-semibold text-center mb-4 font-serif text-black">
+                    Mentee (Youth) Sign Up
+                </h2>
+                {message && (
+                    <div className="bg-white text-black p-3 rounded-md mb-4 text-center">
+                        {message}
+                    </div>
+                )}
+                <form onSubmit={handleSubmit} className="space-y-4">
+                    <input
+                        type="text"
+                        placeholder="Full Name"
+                        value={formData.fullName}
+                        onChange={(e) =>
+                            setFormData({ ...formData, fullName: e.target.value })
+                        }
+                        className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
+                        required
+                    />
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={formData.email}
+                        onChange={(e) =>
+                            setFormData({ ...formData, email: e.target.value })
+                        }
+                        className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
+                        required
+                    />
+                    <input
+                        type="password"
+                        placeholder="Password (min 6 characters)"
+                        value={formData.password}
+                        onChange={(e) =>
+                            setFormData({ ...formData, password: e.target.value })
+                        }
+                        className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
+                        required
+                        minLength={6}
+                    />
+                    <select
+                        value={formData.education}
+                        onChange={(e) =>
+                            setFormData({ ...formData, education: e.target.value })
+                        }
+                        className="w-full border rounded-lg p-2 font-serif focus:outline-none focus:ring-2 focus:ring-black"
+                        required
+                    >
+                        <option value="" disabled>
+                            Choose education level
+                        </option>
+                        <option>Secondary</option>
+                        <option>Undergraduate</option>
+                        <option>Post-graduate</option>
+                        <option>Other</option>
+                    </select>
+                    {formData.education === "Other" && (
+                        <input
+                            type="text"
+                            placeholder="Please specify education level"
+                            value={formData.otherEducation}
+                            onChange={(e) =>
+                                setFormData({ ...formData, otherEducation: e.target.value })
+                            }
+                            className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
+                            required
+                        />
+                    )}
+                    <button
+                        type="submit"
+                        className="w-full bg-black text-white p-2 rounded-lg font-serif font-semibold transition hover:bg-gray-800"
+                    >
+                        Sign Up
+                    </button>
+                </form>
+                <p className="mt-4 text-center text-black">
+                    Already a member?{" "}
+                    <span
+                        onClick={() => navigate("menteeLogin")}
+                        className="text-black font-bold hover:text-black cursor-pointer"
+                    >
+                        Log In
+                    </span>
+                </p>
+            </div>
+        </div>
     );
-    if (exists) {
-      setMessage("Account already exists! Please log in.");
-      navigate("menteeLogin");
-      return;
-    }
-
-    // Save new user
-    users.push({ ...formData, email });
-    localStorage.setItem("users", JSON.stringify(users));
-
-    setMessage(`Signup successful! Welcome ${formData.fullName}`);
-    navigate("menteeLogin"); // send them to login, not dashboard
-  };
-
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-blue-100 p-6">
-      <div className="w-full max-w-md bg-white shadow-md rounded-xl p-6">
-        <h2 className="text-xl font-semibold text-center mb-4 font-serif text-black">
-          Mentee (Youth) Sign Up
-        </h2>
-        {message && (
-          <div className="bg-white text-black p-3 rounded-md mb-4 text-center">
-            {message}
-          </div>
-        )}
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="text"
-            placeholder="Full Name"
-            value={formData.fullName}
-            onChange={(e) =>
-              setFormData({ ...formData, fullName: e.target.value })
-            }
-            className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
-            required
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
-            }
-            className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
-            required
-          />
-          <input
-            type="password"
-            placeholder="Password (min 6 characters)"
-            value={formData.password}
-            onChange={(e) =>
-              setFormData({ ...formData, password: e.target.value })
-            }
-            className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
-            required
-            minLength={6}
-          />
-          <select
-            value={formData.education}
-            onChange={(e) =>
-              setFormData({ ...formData, education: e.target.value })
-            }
-            className="w-full border rounded-lg p-2 font-serif focus:outline-none focus:ring-2 focus:ring-black"
-            required
-          >
-            <option value="" disabled>
-              Choose education level
-            </option>
-            <option>Secondary</option>
-            <option>Undergraduate</option>
-            <option>Post-graduate</option>
-            <option>Other</option>
-          </select>
-          {formData.education === "Other" && (
-            <input
-              type="text"
-              placeholder="Please specify education level"
-              value={formData.otherEducation}
-              onChange={(e) =>
-                setFormData({ ...formData, otherEducation: e.target.value })
-              }
-              className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black"
-              required
-            />
-          )}
-          <button
-            type="submit"
-            className="w-full bg-black text-white p-2 rounded-lg font-serif font-semibold transition hover:bg-gray-800"
-          >
-            Sign Up
-          </button>
-        </form>
-        <p className="mt-4 text-center text-black">
-          Already a member?{" "}
-          <span
-            onClick={() => navigate("menteeLogin")}
-            className="text-black font-bold hover:text-black cursor-pointer"
-          >
-            Log In
-          </span>
-        </p>
-      </div>
-    </div>
-  );
 }
 // --- Dashboard Components ---
 function MyMentees() {
@@ -1145,8 +1145,8 @@ function MenteeDashboard() {
                             key={item}
                             onClick={() => setActiveMenu(item)}
                             className={`w-full flex items-center space-x-3 p-3 rounded-lg font-serif transition-all duration-200 ${activeMenu === item
-                                    ? 'bg-white text-black shadow-md'
-                                    : 'text-black hover:bg-white'
+                                ? 'bg-white text-black shadow-md'
+                                : 'text-black hover:bg-white'
                                 }`}
                         >
                             {item === 'My Mentors' && <MentorsIcon />}
