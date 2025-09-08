@@ -1,33 +1,12 @@
 import React, { useState, useEffect } from "react";
+// import { initializeApp } from 'firebase/app';
+// import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from 'firebase/auth';
+// import { getFirestore, setLogLevel, doc, setDoc, onSnapshot } from 'firebase/firestore';
 
 // Inline SVG for icons to avoid external dependencies.
-const LuUsers = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-        <circle cx="8.5" cy="7" r="4"></circle>
-        <path d="M20 8v6M23 11h-6"></path>
-        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-        <circle cx="9" cy="7" r="4" />
-        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-    </svg>
-);
-
-const LuUserPlus = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-        <circle cx="8.5" cy="7" r="4"></circle>
-        <path d="M20 8v6M23 11h-6"></path>
-    </svg>
-);
-
-const LuLayers = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 19L2 12l10-7 10 7-10 7z"></path>
-        <path d="M2 12l10 7 10-7zM12 2v20z"></path>
-    </svg>
-);
-
+const LuUsers = () => (<svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><path d="M20 8v6M23 11h-6"></path><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /> <circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>);
+const LuUserPlus = () => (<svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><path d="M20 8v6M23 11h-6"></path></svg>);
+const LuLayers = () => (<svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19L2 12l10-7 10 7-10 7z"></path><path d="M2 12l10 7 10-7zM12 2v20z"></path></svg>);
 const MentorsIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M17 20h-3a3 3 0 01-3-3V7a3 3 0 013-3h3a3 3 0 013 3v10a3 3 0 01-3 3zM15 10a1 1 0 100-2 1 1 0 000 2zM9 10a1 1 0 100-2 1 1 0 000 2z" /></svg>);
 const SchedulesIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>);
 const ResourcesIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13.486m0-13.486a4.5 4.5 0 110-9 4.5 4.5 0 010 9zm0 0l-3.25 2.167M12 6.253l3.25 2.167m-3.25-2.167A4.5 4.5 0 0112 4.5a4.5 4.5 0 01-4.5 4.5H7.5" /></svg>);
@@ -119,13 +98,13 @@ function Hero({ navigate }) {
                             A bridge to global opportunities and mentorship, empowering the next generation of African leaders.
                         </p>
                     </div>
-                    <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+                    {/* <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
                         <img
                             src="/src/assets/image/mentoring.png"
                             alt="Mentorship illustration"
                             className="rounded-xl shadow-lg w-full max-w-lg"
                         />
-                    </div>
+                    </div> */}
                 </div>
             </section>
             <section className="container mx-auto px-6 py-12 text-center text-black">
@@ -605,31 +584,32 @@ function Resources() {
         </div>
     );
 }
-function Resourcess(){
-return (
-          <div>
+function Resourcess() {
+    return (
+        <div>
             <h2 className="text-3xl font-bold text-black mb-6">Resources</h2>
             <div className="bg-white p-6 rounded-xl shadow-md border border-blue-100">
-              <h3 className="text-xl font-bold text-black mb-2">My Resources</h3>
-              <ul className="space-y-2">
-                <li className="p-3 bg-blue-100 rounded-lg flex justify-between items-center">
-                  <span className="text-black">Resume_Writing_Guide.pdf</span>
-                  <button className="text-black hover:text-blue-500 transition-colors duration-200 flex items-center space-x-1">
-                    <DownloadIcon />
-                    <span>Download</span>
-                  </button>
-                </li>
-                <li className="p-3 bg-blue-100 rounded-lg flex justify-between items-center">
-                  <span className="text-black">Interview_Tips.docx</span>
-                  <button className="text-black hover:text-blue-500 transition-colors duration-200 flex items-center space-x-1">
-                    <DownloadIcon />
-                    <span>Download</span>
-                  </button>
-                </li>
-              </ul>
+                <h3 className="text-xl font-bold text-black mb-2">My Resources</h3>
+                <ul className="space-y-2">
+                    <li className="p-3 bg-blue-100 rounded-lg flex justify-between items-center">
+                        <span className="text-black">Resume_Writing_Guide.pdf</span>
+                        <button className="text-black hover:text-blue-500 transition-colors duration-200 flex items-center space-x-1">
+                            <DownloadIcon />
+                            <span>Download</span>
+                        </button>
+                    </li>
+                    <li className="p-3 bg-blue-100 rounded-lg flex justify-between items-center">
+                        <span className="text-black">Interview_Tips.docx</span>
+                        <button className="text-black hover:text-blue-500 transition-colors duration-200 flex items-center space-x-1">
+                            <DownloadIcon />
+                            <span>Download</span>
+                        </button>
+                    </li>
+                </ul>
             </div>
-          </div>    
-)};
+        </div>
+    )
+};
 function Messages() {
     const [messages, setMessages] = useState([
         { sender: 'Mentee', text: 'Hi, I have a question about my project.', timestamp: '10:00 AM' },
@@ -637,7 +617,7 @@ function Messages() {
     ]);
     const [newMessage, setNewMessage] = useState('');
 
-    const handleSendMessage= () => {
+    const handleSendMessage = () => {
         if (newMessage.trim()) {
             setMessages([...messages, { sender: 'Mentor', text: newMessage, timestamp: '10:02 AM' }]);
             setNewMessage('');
@@ -713,23 +693,23 @@ function Announcements() {
         </div>
     );
 }
-function Announcementss(){
+function Announcementss() {
     return (
         <div>
             <h2 className="text-3xl font-bold text-black mb-6">Announcements</h2>
             <div className="bg-white p-6 rounded-xl shadow-md border border-blue-100">
-              <ul className="space-y-4">
-                <li className="p-4 bg-blue-100 rounded-lg">
-                  <p className="font-semibold text-black mb-1">Weekly check-in meeting on Friday.</p>
-                  <p className="text-sm text-black">Please be ready to discuss your progress and any roadblocks you've encountered.</p>
-                </li>
-                <li className="p-4 bg-blue-100 rounded-lg">
-                  <p className="font-semibold text-black mb-1">New resource available: "Effective Communication in the Workplace."</p>
-                  <p className="text-sm text-black">I've uploaded a new guide to the resources section. Let me know what you think!</p>
-                </li>
-              </ul>
+                <ul className="space-y-4">
+                    <li className="p-4 bg-blue-100 rounded-lg">
+                        <p className="font-semibold text-black mb-1">Weekly check-in meeting on Friday.</p>
+                        <p className="text-sm text-black">Please be ready to discuss your progress and any roadblocks you've encountered.</p>
+                    </li>
+                    <li className="p-4 bg-blue-100 rounded-lg">
+                        <p className="font-semibold text-black mb-1">New resource available: "Effective Communication in the Workplace."</p>
+                        <p className="text-sm text-black">I've uploaded a new guide to the resources section. Let me know what you think!</p>
+                    </li>
+                </ul>
             </div>
-          </div>
+        </div>
     );
 }
 
@@ -751,7 +731,7 @@ function MentorDashboard() {
 
     return (
         <div className="min-h-screen flex  font-sans">
-            <aside className="w-64 bg-blue-100 text-black p-6 flex flex-col items-center">
+            <aside className="w-64 bg-blue-100 p-6 flex flex-col items-center">
                 <div className="text-center mb-10">
                     <h2 className="text-2xl font-bold font-serif">BRIDGE2RISE</h2>
                     <p className="text-sm">Mentor Dashboard</p>
@@ -777,7 +757,7 @@ function MentorDashboard() {
                 <header className="flex justify-between items-center mb-8">
                     <h1 className="text-3xl font-bold text-black">Dashboard</h1>
                     <div className="flex items-center space-x-4">
-                        <button className="relative text-black hover:text-white transition-colors duration-200">
+                        <button className="relative text-black transition-colors duration-200">
                             <NotificationsIcon />
                             <span className="absolute top-0 right-0 w-2 h-2 bg-black rounded-full animate-ping"></span>
                         </button>
@@ -787,7 +767,7 @@ function MentorDashboard() {
                         </button>
                     </div>
                 </header>
-                <div className="bg-white p-6 rounded-lg shadow-md h-5/6">
+                <div className="p-6 rounded-lg shadow-md h-5/6">
                     {renderContent()}
                 </div>
             </main>
@@ -795,63 +775,299 @@ function MentorDashboard() {
     );
 }
 
+// --- Mentee Profile Component ---
+const MenteeProfile = ({ db, userId, onProfileUpdate }) => {
+    const [formData, setFormData] = useState({
+        fullName: "",
+        country: "",
+        fieldOfStudy: "",
+        otherField: "",
+        skills: "",
+        careerGoal: "",
+        mentorshipAreas: "",
+        languages: "",
+        bio: "",
+        photoUrl: "https://placehold.co/128x128/ffffff/000000?text=Profile",
+    });
+
+    const [previewUrl, setPreviewUrl] = useState(null);
+    const [submitted, setSubmitted] = useState(false);
+    const [isSaving, setIsSaving] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
+
+    // Dropdown options
+    const fieldsOfStudy = ["Computer Science", "Engineering", "Medicine", "Business", "Other"];
+    const careerGoals = ["Software Developer", "Entrepreneur", "Researcher", "Other"];
+    const skillsOptions = ["Web Development", "Data Science", "UI/UX Design", "Project Management", "Other"];
+    const mentorshipAreas = ["Career Guidance", "Technical Skills", "Networking", "Leadership", "Other"];
+    const languagesOptions = ["English", "French", "Kinyarwanda", "Swahili", "Other"];
+
+    useEffect(() => {
+        if (db && userId) {
+            const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+            const userDocRef = doc(db, 'artifacts', appId, 'users', userId, 'profile', 'mentee');
+
+            const unsubscribe = onSnapshot(userDocRef, (docSnap) => {
+                if (docSnap.exists()) {
+                    const profileData = docSnap.data();
+                    setFormData(profileData);
+                    setSubmitted(true);
+                } else {
+                    setSubmitted(false);
+                }
+            });
+            return () => unsubscribe();
+        }
+    }, [db, userId]);
+
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handlePhotoUpload = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const newUrl = URL.createObjectURL(file);
+            setPreviewUrl(newUrl);
+            setFormData((prev) => ({ ...prev, photoUrl: newUrl }));
+        }
+    };
+
+
+    const handleEdit = () => {
+        setIsEditing(true);
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsSaving(true);
+        try {
+            if (db && userId) {
+                const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+                const userDocRef = doc(db, 'artifacts', appId, 'users', userId, 'profile', 'mentee');
+                await setDoc(userDocRef, formData);
+                onProfileUpdate(); // Callback to parent component
+                setIsEditing(false);
+                setSubmitted(true);
+            }
+        } catch (error) {
+            console.error("Error saving profile:", error);
+        } finally {
+            setIsSaving(false);
+        }
+    };
+
+    return (
+        <div className="flex items-center justify-center p-6 bg-white rounded-lg shadow-lg">
+            {!isEditing && submitted ? (
+                // Display mode
+                <div className="text-center space-y-4">
+                    <h2 className="text-3xl font-bold font-serif text-black">Your Profile</h2>
+                    <div className="flex flex-col items-center">
+                        <img
+                            src={formData.photoUrl}
+                            alt="Profile"
+                            className="w-32 h-32 rounded-full object-cover border-2 border-black"
+                        />
+                        <h2 className="mt-4 text-xl font-bold font-serif">{formData.fullName}</h2>
+                        <p className="text-black font-serif">{formData.country}</p>
+                    </div>
+                    <div className="text-left space-y-2 text-black">
+                        <p><span className="font-semibold font-serif">Field of Study:</span> {formData.fieldOfStudy === "Other" ? formData.otherField : formData.fieldOfStudy}</p>
+                        <p><span className="font-semibold font-serif">Skills:</span> {formData.skills}</p>
+                        <p><span className="font-semibold font-serif">Career Goal:</span> {formData.careerGoal}</p>
+                        <p><span className="font-semibold font-serif">Mentorship Areas:</span> {formData.mentorshipAreas}</p>
+                        <p><span className="font-semibold font-serif">Languages:</span> {formData.languages}</p>
+                        <p><span className="font-semibold font-serif">Bio:</span> {formData.bio}</p>
+                    </div>
+                    <button onClick={handleEdit} className="mt-4 w-full bg-black text-white font-serif py-2 rounded-lg hover:bg-gray-800 transition-colors duration-200">
+                        Edit Profile
+                    </button>
+                </div>
+            ) : (
+                // Edit mode
+                <form onSubmit={handleSubmit} className="w-full max-w-lg space-y-4">
+                    <h2 className="text-2xl font-bold text-center font-serif text-black">Edit Profile</h2>
+                    <div className="flex flex-col items-center space-y-2">
+                        <img
+                            src={previewUrl || formData.photoUrl}
+                            alt="Profile Preview"
+                            className="w-24 h-24 rounded-full object-cover border-2 border-black"
+                        />
+                        <label htmlFor="photo-upload" className="cursor-pointer bg-blue-100 text-black py-2 px-4 rounded-lg font-serif">
+                            Upload Photo
+                        </label>
+                        <input
+                            id="photo-upload"
+                            type="file"
+                            accept="image/*"
+                            onChange={handlePhotoUpload}
+                            className="hidden"
+                        />
+                    </div>
+                    <input type="text" name="fullName" placeholder="Full Name" value={formData.fullName} onChange={handleChange} className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-100" required />
+                    <input type="text" name="country" placeholder="Country" value={formData.country} onChange={handleChange} className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-100" required />
+                    <select name="fieldOfStudy" value={formData.fieldOfStudy} onChange={handleChange} className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-100">
+                        {fieldsOfStudy.map(option => <option key={option} value={option}>{option}</option>)}
+                    </select>
+                    {formData.fieldOfStudy === "Other" && (<input type="text" name="otherField" placeholder="Specify field of study" value={formData.otherField} onChange={handleChange} className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-100" required />)}
+                    <input type="text" name="skills" placeholder="Skills (e.g., HTML, CSS, JavaScript)" value={formData.skills} onChange={handleChange} className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-100" required />
+                    <select name="careerGoal" value={formData.careerGoal} onChange={handleChange} className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-100">
+                        {careerGoals.map(option => <option key={option} value={option}>{option}</option>)}
+                    </select>
+                    <select name="mentorshipAreas" value={formData.mentorshipAreas} onChange={handleChange} className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-100">
+                        {mentorshipAreas.map(option => <option key={option} value={option}>{option}</option>)}
+                    </select>
+                    <input type="text" name="languages" placeholder="Languages (e.g., English, French)" value={formData.languages} onChange={handleChange} className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-100" required />
+                    <textarea name="bio" placeholder="Tell us about yourself..." value={formData.bio} onChange={handleChange} rows="4" className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-100" required />
+                    <button type="submit" className="w-full bg-blue-100 text-black font-serif py-2 rounded-lg hover:bg-black hover:text-white transition-colors duration-200" disabled={isSaving}>
+                        {isSaving ? "Saving..." : "Save Profile"}
+                    </button>
+                </form>
+            )}
+        </div>
+    );
+};
+
 // --- Mentee Dashboard Component ---
+
 function MyMentors() {
     return (
         <div>
             <h2 className="text-3xl font-bold text-black mb-6">My Mentors</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="bg-white p-6 rounded-xl shadow-md border border-blue-100">
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center font-bold text-black">JD</div>
-                  <div>
-                    <h3 className="text-lg font-bold text-black">John Doe</h3>
-                    <p className="text-sm text-black">Field: Software Engineering</p>
-                  </div>
+                <div className="bg-white p-6 rounded-xl shadow-md border border-blue-100">
+                    <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center font-bold text-black">JD</div>
+                        <div>
+                            <h3 className="text-lg font-bold text-black">John Doe</h3>
+                            <p className="text-sm text-black">Field: Software Engineering</p>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md border border-blue-100">
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center font-bold text-black">SM</div>
-                  <div>
-                    <h3 className="text-lg font-bold text-black">Sarah Mbote</h3>
-                    <p className="text-sm text-black">Field: Product Management</p>
-                  </div>
+                <div className="bg-white p-6 rounded-xl shadow-md border border-blue-100">
+                    <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center font-bold text-black">SM</div>
+                        <div>
+                            <h3 className="text-lg font-bold text-black">Sarah Mbote</h3>
+                            <p className="text-sm text-black">Field: Product Management</p>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
+        </div>
     );
 }
 
 function MenteeDashboard() {
     const [activeMenu, setActiveMenu] = useState('My Mentors');
+    const [isAuthReady, setIsAuthReady] = useState(false);
+    const [db, setDb] = useState(null);
+    const [auth, setAuth] = useState(null);
+    const [userId, setUserId] = useState(null);
     const menuItems = ['My Mentors', 'Schedules', 'Resources', 'Messages', 'Announcements'];
+
+    useEffect(() => {
+        // Check for global variables
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        if (Object.keys(firebaseConfig).length > 0) {
+            try {
+                const app = initializeApp(firebaseConfig, appId);
+                const authInstance = getAuth(app);
+                const dbInstance = getFirestore(app);
+
+                setDb(dbInstance);
+                setAuth(authInstance);
+
+                // Set Firebase log level for debugging
+                setLogLevel('debug');
+
+                // Listen for authentication state changes
+                const unsubscribe = onAuthStateChanged(authInstance, async (user) => {
+                    if (user) {
+                        setUserId(user.uid);
+                        console.log("User authenticated:", user.uid);
+                    } else {
+                        console.log("No user found, signing in anonymously...");
+                        try {
+                            if (initialAuthToken) {
+                                await signInWithCustomToken(authInstance, initialAuthToken);
+                                console.log("Signed in with custom token.");
+                            } else {
+                                await signInAnonymously(authInstance);
+                                console.log("Signed in anonymously.");
+                            }
+                        } catch (error) {
+                            console.error("Firebase auth error:", error);
+                        }
+                    }
+                    setIsAuthReady(true);
+                });
+
+                // Cleanup function for the listener
+                return () => unsubscribe();
+            } catch (error) {
+                console.error("Error initializing Firebase:", error);
+            }
+        } else {
+            console.log("Firebase config not available. App will run without database features.");
+            setIsAuthReady(true);
+        }
+    }, []);
+
+    const handleProfileUpdate = () => {
+        setActiveMenu('Profile');
+    };
+
+    //Rendering Content
 
     const renderContent = () => {
         switch (activeMenu) {
             case 'My Mentors': return <MyMentors />;
             case 'Schedules': return <Schedules />;
-            case 'Resources': return <Resourcess/>;
+            case 'Resources': return <Resourcess />;
             case 'Messages': return <Messages />;
             case 'Announcements': return <Announcementss />;
+            case 'Profile': return <MenteeProfile db={db} userId={userId} onProfileUpdate={handleProfileUpdate} />;
             default: return <div className="text-black">Welcome to your dashboard!</div>;
         }
     };
+    if (!isAuthReady) {
+        return (
+            <div className="flex items-center justify-center min-h-screen bg-white">
+                <div className="text-center">
+                    <svg className="animate-spin h-10 w-10 text-black mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <p className="mt-2 text-black">Loading...</p>
+                </div>
+            </div>
+        );
+    }
 
     return (
-        <div className="min-h-screen flex  font-sans">
-            <aside className="w-64 bg-blue-100 text-black p-6 flex flex-col items-center">
-                <div className="text-center mb-10">
-                    <h2 className="text-2xl font-bold font-serif">BRIDGE2RISE</h2>
-                    <p className="text-sm">Mentee Dashboard</p>
+        <div className="flex flex-col md:flex-row min-h-screen bg-white text-black">
+            {/* Sidebar */}
+            <aside className="w-full md:w-64 p-4 bg-blue-100 flex flex-col items-center shadow-lg">
+                <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center text-3xl font-bold text-black shadow-inner">
+                    <ProfileIcon />
                 </div>
-                <nav className="w-full space-y-2">
+                <h2 className="mt-4 text-xl font-semibold text-black">{userId || "Guest"}</h2>
+                <nav className="mt-8 w-full space-y-2">
                     {menuItems.map((item) => (
                         <button
                             key={item}
                             onClick={() => setActiveMenu(item)}
-                            className={`w-full flex items-center space-x-3 p-3 rounded-lg font-medium transition-colors duration-200 ${activeMenu === item ? 'bg-blue-100 text-black shadow-md' : 'text-white hover:bg-white hover:text-black'}`}
+                            className={`w-full flex items-center space-x-3 p-3 rounded-lg font-serif transition-all duration-200 ${activeMenu === item
+                                    ? 'bg-white text-black shadow-md'
+                                    : 'text-black hover:bg-white'
+                                }`}
                         >
                             {item === 'My Mentors' && <MentorsIcon />}
                             {item === 'Schedules' && <SchedulesIcon />}
@@ -863,23 +1079,25 @@ function MenteeDashboard() {
                     ))}
                 </nav>
             </aside>
-            <main className="flex-1 p-8 overflow-y-auto">
+
+            {/* Main Content */}
+            <main className="flex-1 p-8 overflow-y-auto bg-white">
+                {/* Top bar */}
                 <header className="flex justify-between items-center mb-8">
                     <h1 className="text-3xl font-bold text-black">Dashboard</h1>
                     <div className="flex items-center space-x-4">
-                        <button className="relative text-black hover:text-white transition-colors duration-200">
+                        <button className="relative text-black hover:text-blue-100 transition-colors duration-200">
                             <NotificationsIcon />
                             <span className="absolute top-0 right-0 w-2 h-2 bg-black rounded-full animate-ping"></span>
                         </button>
-                        <button className="flex items-center space-x-2 text-black hover:text-white transition-colors duration-200">
+                        <button onClick={() => setActiveMenu('Profile')} className="flex items-center space-x-2 text-black hover:text-blue-100 transition-colors duration-200">
                             <ProfileIcon />
                             <span>Profile</span>
                         </button>
                     </div>
                 </header>
-                <div className="bg-white p-6 rounded-lg shadow-md h-5/6">
-                    {renderContent()}
-                </div>
+
+                {renderContent()}
             </main>
         </div>
     );
