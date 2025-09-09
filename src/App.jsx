@@ -8,7 +8,7 @@
 // import MenteeDashboard from './components/MenteeDashboard'
 // import Footer from './components/footer'
 import All from './components/Combined'
-import MentorProfile from "./components/MentorProfile"
+// import MentorProfile from "./components/MentorProfile"
 
 
 export default function App() {
@@ -24,7 +24,7 @@ export default function App() {
     <MenteeDashboard />
     <Footer /> */}
     < All />
-    <MentorProfile/>
+    {/* <MentorProfile/> */}
    </>
   )
 }
