@@ -98,13 +98,6 @@ function Hero({ navigate }) {
                             A bridge to global opportunities and mentorship, empowering the next generation of African leaders.
                         </p>
                     </div>
-                    {/* <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
-                        <img
-                            src="/src/assets/image/mentoring.png"
-                            alt="Mentorship illustration"
-                            className="rounded-xl shadow-lg w-full max-w-lg"
-                        />
-                    </div> */}
                 </div>
             </section>
             <section className="container mx-auto px-6 py-12 text-center text-black">
