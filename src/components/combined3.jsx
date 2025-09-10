@@ -146,7 +146,7 @@ function Navbar({ navigate, auth, onLogout }) {
 function Hero() {
     return (
         <main className="bg-blue-100">
-            <section className="bg-white bg-[url('\longBridge.png')] bg-cover  text-black py-16 px-6 md:px-12 lg:px-20 lg:py-24 rounded-b-3xl">
+            <section className="bg-white bg-[url('/longBridge.png')] object-cover  text-black py-16 px-6 md:px-12 lg:px-20 lg:py-24 rounded-b-3xl">
                 <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between space-y-10 lg:space-y-0 lg:space-x-12">
                     <div className="w-full lg:w-1/2 text-center lg:text-left">
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-serif leading-tight">
