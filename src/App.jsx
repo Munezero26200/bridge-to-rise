@@ -1,10 +1,10 @@
-import All from './components/combined3'
+import Bridge2RiseApp from './components/combined4'
 
 
 export default function App() {
   return (
    <>
-    <All/>
+    <Bridge2RiseApp/>
    </>
   )
 }
