@@ -100,7 +100,7 @@ function Navbar({ navigate, auth, onLogout }) {
             <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between font-sans">
                 <div className="flex items-center space-x-3">
                     <img
-                        src="/src/assets/image/logo.png"
+                        src="/logo.png"
                         alt="Bridge2Rise logo"
                         className="h-12 md:h-14 lg:h-16 rounded-2xl"
                     />
@@ -146,7 +146,7 @@ function Navbar({ navigate, auth, onLogout }) {
 function Hero() {
     return (
         <main className="bg-blue-100">
-            <section className="bg-white bg-[url('C:\Users\User\bridge-to-rise\src\assets\image\longBridge.png')] bg-cover  text-black py-16 px-6 md:px-12 lg:px-20 lg:py-24 rounded-b-3xl">
+            <section className="bg-white bg-[url('/longBridge.png')] bg-cover  text-black py-16 px-6 md:px-12 lg:px-20 lg:py-24 rounded-b-3xl">
                 <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between space-y-10 lg:space-y-0 lg:space-x-12">
                     <div className="w-full lg:w-1/2 text-center lg:text-left">
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-serif leading-tight">
