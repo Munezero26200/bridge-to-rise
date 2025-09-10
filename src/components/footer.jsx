@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 const Footer = () => {
     return (
         <div>
-            <footer className="bg-blue-100 py-8">
+            <footer className="bg-blue-600 py-8">
                 <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center md:items-start text-center md:text-left space-y-4 md:space-y-0">
                     <div className="left-footer">
                         <h3 className="text-xl font-bold">BRIDGE2RISE</h3>
